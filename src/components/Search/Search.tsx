@@ -1,6 +1,11 @@
-import { Component } from 'react';
+import { Component, FormEvent } from 'react';
 
-class Search extends Component {
+type SearchProps = {
+  query?: string;
+  onSubmit: (s: string) => void;
+};
+
+class Search extends Component<SearchProps> {
   state = {
     query: '',
   };
@@ -11,15 +16,17 @@ class Search extends Component {
     });
   };
 
-  handleSubmit = () => {
-    alert(this.state.query);
+  handleSubmit = (e: FormEvent) => {
+    // alert(this.state.query);
+    e.preventDefault();
+    this.props.onSubmit(this.state.query);
   };
 
   render() {
     return (
       <div>
         <h2>Search field</h2>
-        <form onSubmit={() => this.handleSubmit()}>
+        <form name="searchform" onSubmit={(e) => this.handleSubmit(e)}>
           <input
             type="text"
             // className={s.searchInput}

@@ -1,41 +1,105 @@
 import { Component } from 'react';
+import NewsApiResponse from '../../interface/newsapiresponse';
+import NewsApiArticle from '../../interface/newsapiarticle';
 
-class Content extends Component {
-  state = {
-    items: [
-      {
-        title: 'Item #1',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien et ligula ullamcorper malesuada. Fusce id velit ut tortor pretium viverra suspendisse. Eu augue ut lectus arcu. Lectus urna duis convallis convallis tellus id interdum velit laoreet. Phasellus egestas tellus rutrum tellus pellentesque eu.',
-      },
-      {
-        title: 'Item #2',
-        text: 'Vel turpis nunc eget lorem dolor sed viverra. Consectetur purus ut faucibus pulvinar. Enim diam vulputate ut pharetra sit amet aliquam id. Vulputate mi sit amet mauris. Turpis egestas maecenas pharetra convallis posuere morbi leo urna molestie. Malesuada nunc vel risus commodo viverra maecenas accumsan lacus. Mauris augue neque gravida in.',
-      },
-      {
-        title: 'Item #3',
-        text: 'Aliquet nec ullamcorper sit amet. Vitae tempus quam pellentesque nec nam aliquam sem. Semper eget duis at tellus at. Ultricies lacus sed turpis tincidunt id aliquet. Interdum posuere lorem ipsum dolor. Arcu felis bibendum ut tristique et egestas. Pharetra et ultrices neque ornare aenean euismod. Eu sem integer vitae justo eget.',
-      },
-      {
-        title: 'Item #4',
-        text: 'Id eu nisl nunc mi ipsum. Iaculis eu non diam phasellus vestibulum lorem sed risus ultricies. Mi tempus imperdiet nulla malesuada pellentesque. Suscipit adipiscing bibendum est ultricies. Mattis enim ut tellus elementum sagittis vitae et. Sapien et ligula ullamcorper malesuada proin libero nunc consequat.',
-      },
-      {
-        title: 'Item #5',
-        text: 'Quis lectus nulla at volutpat diam ut venenatis tellus in. Fringilla ut morbi tincidunt augue interdum velit euismod. Id ornare arcu odio ut sem nulla pharetra diam sit. Arcu ac tortor dignissim convallis. Scelerisque felis imperdiet proin fermentum leo. Lorem ipsum dolor sit amet. Enim tortor at auctor urna nunc id cursus metus. Amet aliquam id diam maecenas ultricies mi eget mauris.',
-      },
-    ],
+// const apiURL = 'https://newsapi.org/v2/everything';
+const apiURL = 'https://newsapi.org/v2/top-headlines';
+// const apiURL = 'http://127.0.0.1:8075/everything';
+
+const apiKey = 'eef9fc46616347dbbfb3e24da3a43690';
+
+type ContentProps = {
+  query?: string;
+};
+
+type ContentState = {
+  loading: boolean;
+  content: null | NewsApiResponse;
+};
+
+interface Options {
+  pageSize: number;
+  page: number;
+}
+
+const options: Options = {
+  pageSize: 10,
+  page: 1,
+};
+
+const makeURL = () => {
+  if (!apiURL || !apiKey) {
+    throw new Error('Invalid request');
+  }
+  let url = apiURL;
+  if (options) {
+    url = url + '?';
+    for (const key in options) {
+      url = url + `${key}=${options[key as keyof Options]}&`;
+    }
+    url = url.slice(0, -1);
+  }
+  return `${url}&language=en&apiKey=${apiKey}`;
+};
+
+async function apiCall(): Promise<NewsApiResponse> {
+  const res = await fetch(makeURL());
+  const data = await res.json();
+  return data;
+}
+
+class Content extends Component<ContentProps> {
+  state: ContentState = {
+    loading: false,
+    content: null,
   };
+
+  renderContent() {
+    const data = this.state.content as NewsApiResponse;
+    if (data && 'articles' in data && data.articles?.length) {
+      return data.articles.map((item: NewsApiArticle) => {
+        return (
+          <div key={item.title}>
+            <h4>{item.title}</h4>
+            <p>Source: {item.source.name}</p>
+            {item.author && <p>Author: {item.author}</p>}
+            {item.description && <p>{item.description}</p>}
+            <a href={item.url}>Read</a>
+            <hr />
+          </div>
+        );
+      });
+    }
+    return <div>No data</div>;
+  }
+
+  componentDidMount(): void {
+    this.setState({
+      loading: true,
+    });
+    apiCall().then((res) => {
+      this.setState({
+        content: res,
+      });
+      this.setState({
+        loading: false,
+      });
+    });
+  }
 
   render() {
     return (
       <div>
-        {this.state.items.length &&
-          this.state.items.map(({ title, text }) => (
-            <div key={title}>
-              <h3>{title}</h3>
-              <div>{text}</div>
-            </div>
-          ))}
+        <h2>Content</h2>
+        {this.state.loading ? (
+          <h2>Loading...</h2>
+        ) : (
+          <div>
+            <h3>{this.props.query}</h3>
+            <div>{makeURL()}</div>
+            {this.renderContent()}
+          </div>
+        )}
       </div>
     );
   }

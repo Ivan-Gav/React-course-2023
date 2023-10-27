@@ -1,0 +1,124 @@
+{
+  "status": "ok",
+  "totalResults": 1000,
+  " ": [
+    {
+      "source": {
+        "id": "google-news",
+        "name": "Google News"
+      },
+      "author": "Mirage News",
+      "title": "David Muller wins Cowley Medal and Keithley Award - Mirage News",
+      "description": null,
+      "url": "https://news.google.com/rss/articles/CBMiT2h0dHBzOi8vd3d3Lm1pcmFnZW5ld3MuY29tL2RhdmlkLW11bGxlci13aW5zLWNvd2xleS1tZWRhbC1hbmQta2VpdGhsZXktMTExMTcyMy_SAQA?oc=5",
+      "urlToImage": null,
+      "publishedAt": "2023-10-26T16:33:00Z",
+      "content": null
+    },
+    {
+      "source": { "id": null, "name": "News18" },
+      "author": "Dishya Sharma",
+      "title": "Anushka Sharma Shares Her Baby Bump Photo Amid 2nd Pregnancy Rumours: 'Time Flies…' - News18",
+      "description": "Amid second pregnancy rumours, Anushka Sharma shared a picture in which she was seen with a baby bump.",
+      "url": "https://www.news18.com/movies/anushka-sharma-shares-her-baby-bump-photo-amid-2nd-pregnancy-rumours-time-flies-8634231.html",
+      "urlToImage": "https://images.news18.com/ibnlive/uploads/2023/10/anushka-sharma-pregnant-3-2023-10-88018d6659500676a48ec3e82e53e197-16x9.jpg?impolicy=website&width=1200&height=675",
+      "publishedAt": "2023-10-26T16:31:33Z",
+      "content": "Anushka Sharma shared a picture of her baby bump amid rumours that she is pregnant again. It has been reported that Anushka and Virat are expecting their second baby together. While Anushka is tight-… [+1608 chars]"
+    },
+    {
+      "source": { "id": null, "name": "India Today" },
+      "author": "India Today News Desk",
+      "title": "Israel-Hamas war LIVE updates: At UN, Iran warns US will 'not be spared' if war in Gaza continues - India Today",
+      "description": "Israeli Prime Minister Benjamin Netanyahu said Israel is preparing for a ground invasion but added that he would not elaborate when or how. Israel kept up its strikes on Gaza after it made a vow to wipe out Hamas. Israeli retaliatory strikes have killed over …",
+      "url": "https://www.indiatoday.in/world/story/israel-hamas-war-live-updates-ground-invasion-air-strikes-gaza-palestine-netanyahu-idf-us-joe-biden-2453726-2023-10-26",
+      "urlToImage": "https://akm-img-a-in.tosshub.com/indiatoday/images/breaking_news/202310/hamas-says-around-50-captives-killed-in-israeli-strikes-in-gaza-262623125-16x9_0.jpg?VersionId=kXyQ5GL8l03POSm5vRMIF9C3.sxk2UXE",
+      "publishedAt": "2023-10-26T16:30:50Z",
+      "content": "Turkey's health minister said on Thursday that he had urged the World Health Organization (WHO) to guarantee the provision of medical services to Gazans hit by the Israel-Hamas war and that its effor… [+627 chars]"
+    },
+    {
+      "source": { "id": null, "name": "YouTube" },
+      "author": null,
+      "title": "Mars Perseverance rover watches Ingenuity helicopter zoom above Red Planet in real time - VideoFromSpace",
+      "description": null,
+      "url": "https://www.youtube.com/watch?v=_nJ7h3bmvlU",
+      "urlToImage": null,
+      "publishedAt": "2023-10-26T16:30:06Z",
+      "content": "Your browser isnt supported anymore. Update it to get the best YouTube experience and our latest features. Learn more"
+    },
+    {
+      "source": {
+        "id": "google-news",
+        "name": "Google News"
+      },
+      "author": "CBC.ca",
+      "title": "Sam Bankman-Fried set to testify in his own defence Thursday after prosecution rests case against him - CBC.ca",
+      "description": null,
+      "url": "https://news.google.com/rss/articles/CBMiSGh0dHBzOi8vd3d3LmNiYy5jYS9uZXdzL2J1c2luZXNzL2JhbmttYW4tZnJpZWQtdHJpYWwtdGVzdGltb255LTEuNzAwODY3NtIBIGh0dHBzOi8vd3d3LmNiYy5jYS9hbXAvMS43MDA4Njc2?oc=5",
+      "urlToImage": null,
+      "publishedAt": "2023-10-26T16:23:20Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "google-news",
+        "name": "Google News"
+      },
+      "author": "Toronto Star",
+      "title": "Blue Jays mailbag: The story behind the Gabriel Moreno trade and chasing Shohei Ohtani - Toronto Star",
+      "description": null,
+      "url": "https://news.google.com/rss/articles/CBMisAFodHRwczovL3d3dy50aGVzdGFyLmNvbS9zcG9ydHMvYmx1ZS1qYXlzL2JsdWUtamF5cy1tYWlsYmFnLXRoZS1zdG9yeS1iZWhpbmQtdGhlLWdhYnJpZWwtbW9yZW5vLXRyYWRlLWFuZC1jaGFzaW5nLXNob2hlaS1vaHRhbmkvYXJ0aWNsZV9lNTNjOWI4OS0zMWFkLTVlYmItYWFmMC1mNjhiYjg4ZGZhOWIuaHRtbNIBtAFodHRwczovL3d3dy50aGVzdGFyLmNvbS9zcG9ydHMvYmx1ZS1qYXlzL2JsdWUtamF5cy1tYWlsYmFnLXRoZS1zdG9yeS1iZWhpbmQtdGhlLWdhYnJpZWwtbW9yZW5vLXRyYWRlLWFuZC1jaGFzaW5nLXNob2hlaS1vaHRhbmkvYXJ0aWNsZV9lNTNjOWI4OS0zMWFkLTVlYmItYWFmMC1mNjhiYjg4ZGZhOWIuYW1wLmh0bWw?oc=5",
+      "urlToImage": null,
+      "publishedAt": "2023-10-26T16:22:44Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "google-news",
+        "name": "Google News"
+      },
+      "author": "Radio Ciudad Del Mar",
+      "title": "Elogia viceministro del CITMA labor de CIGEDEL en Cienfuegos - Radio Ciudad Del Mar",
+      "description": null,
+      "url": "https://news.google.com/rss/articles/CBMiWWh0dHBzOi8vd3d3LnJjbS5jdS8yMDIzLzEwLzI2L2Vsb2dpYS12aWNlbWluaXN0cm8tZGVsLWNpdG1hLWxhYm9yLWRlbC1jaWdlZGVsLWNpZW5mdWVnb3Mv0gEA?oc=5",
+      "urlToImage": null,
+      "publishedAt": "2023-10-26T16:21:58Z",
+      "content": null
+    },
+    {
+      "source": { "id": null, "name": "Seoul.co.kr" },
+      "author": "박성국",
+      "title": "선임 사외이사 둔다… ‘이재용의 뉴삼성’ 경청·책임경영 - 서울신문",
+      "description": "삼성전자 李회장 취임 1년 SDI 권오경·SDS 신현한 교수 선임 삼바 등 8곳서도 도입 이어질 전망 재계 “준법·투명 경영 의지 메시지”, 삼성이 ‘선임(先任) 사외이사’ 제도를 도입해 이사회 중심의 책임경영을 강화한다. “외부의 질책과 조언을 열린 자세로 경청하겠다”는 이재용 삼성전자 회장의 의지에 따른 결정으로, 사외이사의 권한을 강화해 이사회의 독립성을 확보하고 이를 통해 삼성전자를 비롯한 전 삼성 계열사의 경영 투명성을 높인다는 게 이 회장의 복안이다…",
+      "url": "https://www.seoul.co.kr/news/newsView.php?id=20231027006010",
+      "urlToImage": "https://img.seoul.co.kr/img/upload/2023/10/26/SSC_20231026182550.jpg",
+      "publishedAt": "2023-10-26T16:20:50Z",
+      "content": "1\r\nSDI ·SDS 8 · \r\n () . , . 1 .SDI SDS 26 . . .\r\n. , . .\r\n. , , 8 .\r\n, , , , , , 8 .\r\n SDI SDS 1 · .10 27 , , .\r\n20 300 . 2 10 7 5000 .\r\n5 , , , (IT) (R&amp;D) 5 450( 360 ) .\r\n2030 () . 12 1 .\r\n3 , 6… [+15 chars]"
+    },
+    {
+      "source": {
+        "id": "google-news",
+        "name": "Google News"
+      },
+      "author": "TVNET",
+      "title": "Ungārijas flirts ar Krieviju ir nepareizs signāls, uzsver Lietuvas prezidents - TVNET",
+      "description": null,
+      "url": "https://news.google.com/rss/articles/CBMiaWh0dHBzOi8vd3d3LnR2bmV0Lmx2Lzc4ODQ3MDIvdW5nYXJpamFzLWZsaXJ0cy1hci1rcmlldmlqdS1pci1uZXBhcmVpenMtc2lnbmFscy11enN2ZXItbGlldHV2YXMtcHJlemlkZW50c9IBAA?oc=5",
+      "urlToImage": null,
+      "publishedAt": "2023-10-26T16:20:00Z",
+      "content": null
+    },
+    {
+      "source": {
+        "id": "google-news",
+        "name": "Google News"
+      },
+      "author": "Canal Zoom",
+      "title": "Le module funéraire écologique : une nouvelle manière d'inhumer plus respectueuse de l'environnement - Canal Zoom",
+      "description": null,
+      "url": "https://news.google.com/rss/articles/CBMihAFodHRwczovL3d3dy5jYW5hbHpvb20uYmUvYWN0dS9sZS1tb2R1bGUtZnVuZXJhaXJlLWVjb2xvZ2lxdWUtdW5lLW5vdXZlbGxlLW1hbmllcmUtZGluaHVtZXItcGx1cy1yZXNwZWN0dWV1c2UtZGUtbGVudmlyb25uZW1lbnQvMTM5MzfSAQA?oc=5",
+      "urlToImage": null,
+      "publishedAt": "2023-10-26T16:19:30Z",
+      "content": null
+    }
+  ]
+}
