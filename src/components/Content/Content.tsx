@@ -16,7 +16,6 @@ type ContentState = {
   loading: boolean;
   content: null | NewsApiResponse;
   url: string;
-  query?: string;
 };
 
 type Options = {
@@ -31,10 +30,12 @@ class Content extends Component<ContentProps> {
     loading: false,
     content: null,
     url: '',
-    query: this.props.query,
   };
 
-  makeURL(query?: string, options: Options = { pageSize: 10, page: 1 }) {
+  private makeURL(
+    query?: string,
+    options: Options = { pageSize: 10, page: 1 }
+  ) {
     if (!apiURL || !apiKey) {
       throw new Error('Invalid request');
     }
@@ -44,20 +45,30 @@ class Content extends Component<ContentProps> {
     }
     url = url.slice(0, -1);
     if (query) {
-      url = url + `&q=${encodeURIComponent(query)}`;
+      url = url + `&q=${encodeURIComponent(query.trim())}`;
     }
     url = url + `&language=en&apiKey=${apiKey}`;
     this.setState({ url: url });
     return url;
   }
 
-  async apiCall(query?: string): Promise<NewsApiResponse> {
-    const res = await fetch(this.makeURL(query));
-    const data = await res.json();
-    return data;
+  private async apiCall(query?: string): Promise<void> {
+    this.setState({
+      loading: true,
+    });
+    fetch(this.makeURL(query))
+      .then((res) => res.json())
+      .then((data) => {
+        this.setState({
+          content: data,
+        });
+        this.setState({
+          loading: false,
+        });
+      });
   }
 
-  renderContent() {
+  private renderContent() {
     const data = this.state.content as NewsApiResponse;
     if (data && 'articles' in data && data.articles?.length) {
       return data.articles.map((item: NewsApiArticle) => {
@@ -73,36 +84,14 @@ class Content extends Component<ContentProps> {
   }
 
   componentDidMount(): void {
-    this.setState({
-      loading: true,
-    });
-    this.apiCall(this.props.query).then((res) => {
-      this.setState({
-        content: res,
-      });
-      this.setState({
-        loading: false,
-      });
-    });
+    this.apiCall(this.props.query);
   }
 
   componentDidUpdate(prevProps: ContentProps) {
     if (this.props.query !== prevProps.query) {
-      this.setState({
-        loading: true,
-      });
-      this.apiCall(this.props.query).then((res) => {
-        this.setState({
-          content: res,
-        });
-        this.setState({
-          loading: false,
-        });
-      });
+      this.apiCall(this.props.query);
     }
   }
-
-  componentWillUnmount() {}
 
   render() {
     return (
