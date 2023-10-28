@@ -7,19 +7,27 @@ type SearchProps = {
 
 class Search extends Component<SearchProps> {
   state = {
-    query: '',
+    query: localStorage.getItem('searchQuery') || '',
   };
 
-  handleInput = (value: string) => {
+  private handleInput = (value: string) => {
     this.setState({
       query: value,
     });
   };
 
-  handleSubmit = (e: FormEvent) => {
+  private handleSubmit = (e: FormEvent) => {
     // alert(this.state.query);
     e.preventDefault();
     this.props.onSubmit(this.state.query);
+    localStorage.setItem('searchQuery', this.state.query);
+  };
+
+  private clearSearch = () => {
+    this.setState({
+      query: '',
+    });
+    localStorage.removeItem('searchQuery');
   };
 
   render() {
@@ -39,6 +47,13 @@ class Search extends Component<SearchProps> {
             // className=''
           >
             Search
+          </button>
+          <button
+            type="button"
+            onClick={() => this.clearSearch()}
+            // className=''
+          >
+            Clear
           </button>
         </form>
       </div>
