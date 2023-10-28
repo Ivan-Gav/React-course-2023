@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import NewsApiResponse from '../../interface/newsapiresponse';
 import NewsApiArticle from '../../interface/newsapiarticle';
+import NewsSnippet from '../NewsSnippet/NewsSnippet';
 
 // const apiURL = 'https://newsapi.org/v2/everything';
 const apiURL = 'https://newsapi.org/v2/top-headlines';
@@ -59,14 +60,10 @@ class Content extends Component<ContentProps> {
     if (data && 'articles' in data && data.articles?.length) {
       return data.articles.map((item: NewsApiArticle) => {
         return (
-          <div key={item.title}>
-            <h4>{item.title}</h4>
-            <p>Source: {item.source.name}</p>
-            {item.author && <p>Author: {item.author}</p>}
-            {item.description && <p>{item.description}</p>}
-            <a href={item.url}>Read</a>
-            <hr />
-          </div>
+          <NewsSnippet
+            newsItem={item}
+            key={`${item.title}-${item.publishedAt}`}
+          />
         );
       });
     }
