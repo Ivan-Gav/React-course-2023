@@ -2,6 +2,7 @@ import { Component } from 'react';
 import NewsApiResponse from '../../interface/newsapiresponse';
 import NewsApiArticle from '../../interface/newsapiarticle';
 import NewsSnippet from '../NewsSnippet/NewsSnippet';
+import Loader from '../Loader/Loader';
 
 const apiURL = 'https://newsapi.org/v2/top-headlines';
 // const apiURL = 'http://127.0.0.1:8075/everything';
@@ -98,11 +99,12 @@ class Content extends Component<ContentProps> {
       <div>
         <h2>Content</h2>
         {this.state.loading ? (
-          <h2>Loading...</h2>
+          <Loader />
         ) : (
           <div>
             {this.props.query && <h3>Search for: {this.props.query}</h3>}
-            <div>{this.state.url}</div>
+            {/* <div>{this.state.url}</div> */}
+            <hr />
             {this.renderContent()}
           </div>
         )}
