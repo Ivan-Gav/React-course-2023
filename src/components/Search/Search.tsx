@@ -1,13 +1,18 @@
 import { Component, FormEvent } from 'react';
 
-type SearchProps = {
+type SearchState = {
   query?: string;
+  hasError: boolean;
+};
+
+type SearchProps = {
   onSubmit: (s: string) => void;
 };
 
-class Search extends Component<SearchProps> {
+class Search extends Component<SearchProps, SearchState> {
   state = {
     query: localStorage.getItem('searchQuery') || '',
+    hasError: false,
   };
 
   private handleInput = (value: string) => {
@@ -17,7 +22,6 @@ class Search extends Component<SearchProps> {
   };
 
   private handleSubmit = (e: FormEvent) => {
-    // alert(this.state.query);
     e.preventDefault();
     this.props.onSubmit(this.state.query);
     localStorage.setItem('searchQuery', this.state.query);
@@ -30,6 +34,12 @@ class Search extends Component<SearchProps> {
     localStorage.removeItem('searchQuery');
   };
 
+  componentDidUpdate() {
+    if (this.state.hasError) {
+      throw new Error('I will kill your app!');
+    }
+  }
+
   render() {
     return (
       <div>
@@ -37,23 +47,21 @@ class Search extends Component<SearchProps> {
         <form name="searchform" onSubmit={(e) => this.handleSubmit(e)}>
           <input
             type="text"
-            // className={s.searchInput}
             placeholder="Enter search query"
             value={this.state.query}
             onChange={(e) => this.handleInput(e.target.value)}
           />
-          <button
-            type="submit"
-            // className=''
-          >
-            Search
+          <button type="submit">Search</button>
+          <button type="button" onClick={() => this.clearSearch()}>
+            Clear
           </button>
           <button
             type="button"
-            onClick={() => this.clearSearch()}
-            // className=''
+            onClick={() => {
+              this.setState({ hasError: true });
+            }}
           >
-            Clear
+            Test Error
           </button>
         </form>
       </div>

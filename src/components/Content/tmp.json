@@ -1,124 +1,86 @@
 {
   "status": "ok",
-  "totalResults": 1000,
-  " ": [
+  "totalResults": 8,
+  "articles": [
     {
-      "source": {
-        "id": "google-news",
-        "name": "Google News"
-      },
-      "author": "Mirage News",
-      "title": "David Muller wins Cowley Medal and Keithley Award - Mirage News",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMiT2h0dHBzOi8vd3d3Lm1pcmFnZW5ld3MuY29tL2RhdmlkLW11bGxlci13aW5zLWNvd2xleS1tZWRhbC1hbmQta2VpdGhsZXktMTExMTcyMy_SAQA?oc=5",
+      "source": { "id": "the-washington-post", "name": "The Washington Post" },
+      "author": "Shira Rubin, Loveday Morris",
+      "title": "How Hamas broke through Israel's border defenses during Oct. 7 attack - The Washington Post",
+      "description": "Hamas systematically disabled key communications and warning systems on Oct. 7, allowing gunmen to overwhelm Israeli military bases and kill soldiers in their bunks.",
+      "url": "https://www.washingtonpost.com/world/2023/10/27/hamas-attack-israel-october-7-hostages/",
+      "urlToImage": "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/VBD6LRGI7OA7GJHZRQTBR2SGA4_size-normalized.JPG&w=1440",
+      "publishedAt": "2023-10-27T16:36:07Z",
+      "content": "Comment on this story\r\nComment\r\nAdd to your saved stories\r\nSave\r\nKISSUFIM, Israel When Hamas militants arrived in the tiny kibbutz of Kissufim, less than a mile from the border with the Gaza Strip, t… [+13939 chars]"
+    },
+    {
+      "source": { "id": null, "name": "NDTV News" },
+      "author": null,
+      "title": "Israel Posts Explainer Video Of Gaza Hospital, Alleges It's Hamas HQ - NDTV",
+      "description": "Israel has alleged Hamas has been using Gaza Strip's biggest hospital as its headquarters to ensure Israeli strikes harm civilians, who are allegedly being used as human shield.",
+      "url": "https://www.ndtv.com/world-news/israel-posts-explainer-video-of-gaza-hospital-alleges-its-hamas-hq-4521154",
+      "urlToImage": "https://c.ndtvimg.com/2023-10/cu00ke68_gaza-hospital-gfx_625x300_27_October_23.jpeg",
+      "publishedAt": "2023-10-27T16:02:35Z",
+      "content": "Israel has accused Hamas of using hospitals in Gaza for military purposes\r\nNew Delhi: Israel has alleged Hamas has been using Gaza Strip's biggest hospital as its headquarters to ensure Israeli strik… [+2611 chars]"
+    },
+    {
+      "source": { "id": null, "name": "Livemint" },
+      "author": "Livemint",
+      "title": "Indian Navy veterans get death penalty in Qatar for spying on Israel: Reports | Mint - Mint",
+      "description": "Eight Indian Navy veterans sentenced to death in Qatar, purportedly  on charges of spying for Israel",
+      "url": "https://www.livemint.com/news/india/indian-navy-veterans-get-death-penalty-in-qatar-for-spying-on-israel-reports-11698417514038.html",
+      "urlToImage": "https://www.livemint.com/lm-img/img/2023/10/27/1600x900/PTI10-07-2023-000163A-0_1698420206622_1698420229091.jpg",
+      "publishedAt": "2023-10-27T15:27:27Z",
+      "content": "Eight Indians were sentenced to death in Qatar this week and reportedly stand accused of spying for Israel. The former naval officers had been working for Al Dahra company on a submarine project for … [+208 chars]"
+    },
+    {
+      "source": { "id": null, "name": "[Removed]" },
+      "author": null,
+      "title": "[Removed]",
+      "description": "[Removed]",
+      "url": "https://removed.com",
       "urlToImage": null,
-      "publishedAt": "2023-10-26T16:33:00Z",
-      "content": null
+      "publishedAt": "1970-01-01T00:00:00Z",
+      "content": "[Removed]"
+    },
+    {
+      "source": { "id": "fox-news", "name": "Fox News" },
+      "author": "Chris Pandolfo",
+      "title": "Israel launches second ground incursion into Gaza, Hamas commander killed in airstrike - Fox News",
+      "description": "Israel launched a second brief incursion into Gaza overnight Thursday with ground troops supported by fighter jets and drones as the war against Hamas continues. IDF struck anti-tank missile launch sites, command and control centers and Hamas operatives, the …",
+      "url": "https://www.foxnews.com/live-news/october-27-israel-hamas-war",
+      "urlToImage": "https://livenews.foxnews.com/images/2023/10/4d81efc59286d7ab2ff80862c94d2ddb.jpg",
+      "publishedAt": "2023-10-27T10:23:22Z",
+      "content": "U.S. military forces are maneuvering ships throughout the Middle East to amass one of the largest collections of war ships in the region in decades, according to reports.\r\nMaking its way halfway acro… [+1796 chars]"
     },
     {
       "source": { "id": null, "name": "News18" },
-      "author": "Dishya Sharma",
-      "title": "Anushka Sharma Shares Her Baby Bump Photo Amid 2nd Pregnancy Rumours: 'Time Flies…' - News18",
-      "description": "Amid second pregnancy rumours, Anushka Sharma shared a picture in which she was seen with a baby bump.",
-      "url": "https://www.news18.com/movies/anushka-sharma-shares-her-baby-bump-photo-amid-2nd-pregnancy-rumours-time-flies-8634231.html",
-      "urlToImage": "https://images.news18.com/ibnlive/uploads/2023/10/anushka-sharma-pregnant-3-2023-10-88018d6659500676a48ec3e82e53e197-16x9.jpg?impolicy=website&width=1200&height=675",
-      "publishedAt": "2023-10-26T16:31:33Z",
-      "content": "Anushka Sharma shared a picture of her baby bump amid rumours that she is pregnant again. It has been reported that Anushka and Virat are expecting their second baby together. While Anushka is tight-… [+1608 chars]"
+      "author": "Sanstuti Nath",
+      "title": "Israel-Hamas War LIVE: Palestine Says 1,650 Gazans Still Under Rubble As War Enters Day 21 - News18",
+      "description": "Israel-Hamas War News LIVE Updates as of October 27, 2023. Stay informed on the latest developments on Israel-Palestine Conflict.",
+      "url": "https://www.news18.com/world/israel-hamas-war-live-updates-palestine-gaza-27-10-2023-livenews-8635687.html",
+      "urlToImage": "https://images.news18.com/ibnlive/uploads/2023/10/untitled-design-2-2023-10-88c8edbc3c7ed1b5c7f26397e60731f2-16x9.jpg",
+      "publishedAt": "2023-10-27T09:40:06Z",
+      "content": "October 27, 2023 20:05 ISTIsrael Army Says Hamas 'Wages War from Hospitals' in Gaza\r\nThe Israeli army Friday accused Hamas of using hospitals in the Gaza Strip as operational centres for directing at… [+12188 chars]"
     },
     {
-      "source": { "id": null, "name": "India Today" },
-      "author": "India Today News Desk",
-      "title": "Israel-Hamas war LIVE updates: At UN, Iran warns US will 'not be spared' if war in Gaza continues - India Today",
-      "description": "Israeli Prime Minister Benjamin Netanyahu said Israel is preparing for a ground invasion but added that he would not elaborate when or how. Israel kept up its strikes on Gaza after it made a vow to wipe out Hamas. Israeli retaliatory strikes have killed over …",
-      "url": "https://www.indiatoday.in/world/story/israel-hamas-war-live-updates-ground-invasion-air-strikes-gaza-palestine-netanyahu-idf-us-joe-biden-2453726-2023-10-26",
-      "urlToImage": "https://akm-img-a-in.tosshub.com/indiatoday/images/breaking_news/202310/hamas-says-around-50-captives-killed-in-israeli-strikes-in-gaza-262623125-16x9_0.jpg?VersionId=kXyQ5GL8l03POSm5vRMIF9C3.sxk2UXE",
-      "publishedAt": "2023-10-26T16:30:50Z",
-      "content": "Turkey's health minister said on Thursday that he had urged the World Health Organization (WHO) to guarantee the provision of medical services to Gazans hit by the Israel-Hamas war and that its effor… [+627 chars]"
+      "source": { "id": null, "name": "The Times of Israel" },
+      "author": "Naomi Lanzkron",
+      "title": "IDF says apparent drone strike on Egypt town near Israel launched from ‘Red Sea area’ - The Times of Israel",
+      "description": "IDF says drone attack on Taba wounding 6 launched from 'Red Sea area'; incident comes week after Iran-backed Houthi rebels in Yemen tried to fire missiles at Israel from Red Sea",
+      "url": "https://www.timesofisrael.com/idf-says-apparent-drone-strike-on-egypt-town-near-israel-launched-from-red-sea-area/",
+      "urlToImage": "https://static.timesofisrael.com/www/uploads/2023/10/afp.com-20111026-PH-NIC-Nic6021749-highres.jpg",
+      "publishedAt": "2023-10-27T09:02:30Z",
+      "content": "The Israel Defense Forces on Friday said a fighter jet intercepted a target over the Red Sea — apparently a drone heading for Israel — hours after an unmanned aerial vehicle slammed into the Egyptian… [+5835 chars]"
     },
     {
-      "source": { "id": null, "name": "YouTube" },
-      "author": null,
-      "title": "Mars Perseverance rover watches Ingenuity helicopter zoom above Red Planet in real time - VideoFromSpace",
-      "description": null,
-      "url": "https://www.youtube.com/watch?v=_nJ7h3bmvlU",
-      "urlToImage": null,
-      "publishedAt": "2023-10-26T16:30:06Z",
-      "content": "Your browser isnt supported anymore. Update it to get the best YouTube experience and our latest features. Learn more"
-    },
-    {
-      "source": {
-        "id": "google-news",
-        "name": "Google News"
-      },
-      "author": "CBC.ca",
-      "title": "Sam Bankman-Fried set to testify in his own defence Thursday after prosecution rests case against him - CBC.ca",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMiSGh0dHBzOi8vd3d3LmNiYy5jYS9uZXdzL2J1c2luZXNzL2JhbmttYW4tZnJpZWQtdHJpYWwtdGVzdGltb255LTEuNzAwODY3NtIBIGh0dHBzOi8vd3d3LmNiYy5jYS9hbXAvMS43MDA4Njc2?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2023-10-26T16:23:20Z",
-      "content": null
-    },
-    {
-      "source": {
-        "id": "google-news",
-        "name": "Google News"
-      },
-      "author": "Toronto Star",
-      "title": "Blue Jays mailbag: The story behind the Gabriel Moreno trade and chasing Shohei Ohtani - Toronto Star",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMisAFodHRwczovL3d3dy50aGVzdGFyLmNvbS9zcG9ydHMvYmx1ZS1qYXlzL2JsdWUtamF5cy1tYWlsYmFnLXRoZS1zdG9yeS1iZWhpbmQtdGhlLWdhYnJpZWwtbW9yZW5vLXRyYWRlLWFuZC1jaGFzaW5nLXNob2hlaS1vaHRhbmkvYXJ0aWNsZV9lNTNjOWI4OS0zMWFkLTVlYmItYWFmMC1mNjhiYjg4ZGZhOWIuaHRtbNIBtAFodHRwczovL3d3dy50aGVzdGFyLmNvbS9zcG9ydHMvYmx1ZS1qYXlzL2JsdWUtamF5cy1tYWlsYmFnLXRoZS1zdG9yeS1iZWhpbmQtdGhlLWdhYnJpZWwtbW9yZW5vLXRyYWRlLWFuZC1jaGFzaW5nLXNob2hlaS1vaHRhbmkvYXJ0aWNsZV9lNTNjOWI4OS0zMWFkLTVlYmItYWFmMC1mNjhiYjg4ZGZhOWIuYW1wLmh0bWw?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2023-10-26T16:22:44Z",
-      "content": null
-    },
-    {
-      "source": {
-        "id": "google-news",
-        "name": "Google News"
-      },
-      "author": "Radio Ciudad Del Mar",
-      "title": "Elogia viceministro del CITMA labor de CIGEDEL en Cienfuegos - Radio Ciudad Del Mar",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMiWWh0dHBzOi8vd3d3LnJjbS5jdS8yMDIzLzEwLzI2L2Vsb2dpYS12aWNlbWluaXN0cm8tZGVsLWNpdG1hLWxhYm9yLWRlbC1jaWdlZGVsLWNpZW5mdWVnb3Mv0gEA?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2023-10-26T16:21:58Z",
-      "content": null
-    },
-    {
-      "source": { "id": null, "name": "Seoul.co.kr" },
-      "author": "박성국",
-      "title": "선임 사외이사 둔다… ‘이재용의 뉴삼성’ 경청·책임경영 - 서울신문",
-      "description": "삼성전자 李회장 취임 1년 SDI 권오경·SDS 신현한 교수 선임 삼바 등 8곳서도 도입 이어질 전망 재계 “준법·투명 경영 의지 메시지”, 삼성이 ‘선임(先任) 사외이사’ 제도를 도입해 이사회 중심의 책임경영을 강화한다. “외부의 질책과 조언을 열린 자세로 경청하겠다”는 이재용 삼성전자 회장의 의지에 따른 결정으로, 사외이사의 권한을 강화해 이사회의 독립성을 확보하고 이를 통해 삼성전자를 비롯한 전 삼성 계열사의 경영 투명성을 높인다는 게 이 회장의 복안이다…",
-      "url": "https://www.seoul.co.kr/news/newsView.php?id=20231027006010",
-      "urlToImage": "https://img.seoul.co.kr/img/upload/2023/10/26/SSC_20231026182550.jpg",
-      "publishedAt": "2023-10-26T16:20:50Z",
-      "content": "1\r\nSDI ·SDS 8 · \r\n () . , . 1 .SDI SDS 26 . . .\r\n. , . .\r\n. , , 8 .\r\n, , , , , , 8 .\r\n SDI SDS 1 · .10 27 , , .\r\n20 300 . 2 10 7 5000 .\r\n5 , , , (IT) (R&amp;D) 5 450( 360 ) .\r\n2030 () . 12 1 .\r\n3 , 6… [+15 chars]"
-    },
-    {
-      "source": {
-        "id": "google-news",
-        "name": "Google News"
-      },
-      "author": "TVNET",
-      "title": "Ungārijas flirts ar Krieviju ir nepareizs signāls, uzsver Lietuvas prezidents - TVNET",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMiaWh0dHBzOi8vd3d3LnR2bmV0Lmx2Lzc4ODQ3MDIvdW5nYXJpamFzLWZsaXJ0cy1hci1rcmlldmlqdS1pci1uZXBhcmVpenMtc2lnbmFscy11enN2ZXItbGlldHV2YXMtcHJlemlkZW50c9IBAA?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2023-10-26T16:20:00Z",
-      "content": null
-    },
-    {
-      "source": {
-        "id": "google-news",
-        "name": "Google News"
-      },
-      "author": "Canal Zoom",
-      "title": "Le module funéraire écologique : une nouvelle manière d'inhumer plus respectueuse de l'environnement - Canal Zoom",
-      "description": null,
-      "url": "https://news.google.com/rss/articles/CBMihAFodHRwczovL3d3dy5jYW5hbHpvb20uYmUvYWN0dS9sZS1tb2R1bGUtZnVuZXJhaXJlLWVjb2xvZ2lxdWUtdW5lLW5vdXZlbGxlLW1hbmllcmUtZGluaHVtZXItcGx1cy1yZXNwZWN0dWV1c2UtZGUtbGVudmlyb25uZW1lbnQvMTM5MzfSAQA?oc=5",
-      "urlToImage": null,
-      "publishedAt": "2023-10-26T16:19:30Z",
-      "content": null
+      "source": { "id": "reuters", "name": "Reuters" },
+      "author": "Reuters",
+      "title": "Ukraine, Israel funding request should be split: House speaker - Reuters",
+      "description": "Newly elected U.S. Speaker of the House Mike Johnson said on Thursday that funding to support Ukraine and Israel should be handled separately, suggesting he will not back President Joe Biden's $106 billion aid package for both countries.",
+      "url": "https://www.reuters.com/world/new-us-house-speaker-says-ukraine-israel-funding-request-should-be-split-2023-10-27/",
+      "urlToImage": "https://www.reuters.com/resizer/clkyfqMPWTlBVO4d7UPiQU7yoiQ=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/VORKN5NVNRJG3H2JSL6CG2DW6E.jpg",
+      "publishedAt": "2023-10-27T06:25:56Z",
+      "content": "WASHINGTON, Oct 26 (Reuters) - Newly elected U.S. Speaker of the House Mike Johnson said on Thursday that funding to support Ukraine and Israel should be handled separately, suggesting he will not ba… [+1478 chars]"
     }
   ]
 }
