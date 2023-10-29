@@ -6,12 +6,13 @@ type SearchState = {
 };
 
 type SearchProps = {
+  query: string;
   onSubmit: (s: string) => void;
 };
 
 class Search extends Component<SearchProps, SearchState> {
   state = {
-    query: localStorage.getItem('searchQuery') || '',
+    query: this.props.query,
     hasError: false,
   };
 
@@ -24,14 +25,13 @@ class Search extends Component<SearchProps, SearchState> {
   private handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     this.props.onSubmit(this.state.query);
-    localStorage.setItem('searchQuery', this.state.query);
   };
 
   private clearSearch = () => {
     this.setState({
       query: '',
     });
-    localStorage.removeItem('searchQuery');
+    this.props.onSubmit('');
   };
 
   componentDidUpdate() {

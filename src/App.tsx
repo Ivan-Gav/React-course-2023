@@ -4,20 +4,20 @@ import Search from './components/Search/Search';
 
 class App extends Component {
   state = {
-    query: '',
+    query: localStorage.getItem('searchQuery') || '',
   };
 
   handleSearch = (data: string) => {
     this.setState({
       query: data,
     });
-    console.log(data);
+    localStorage.setItem('searchQuery', data);
   };
 
   render() {
     return (
       <>
-        <Search onSubmit={this.handleSearch} />
+        <Search onSubmit={this.handleSearch} query={this.state.query} />
         <hr />
         <Content query={this.state.query} />
       </>
