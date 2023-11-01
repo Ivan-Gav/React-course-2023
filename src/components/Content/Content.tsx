@@ -5,7 +5,6 @@ import NewsSnippet from '../NewsSnippet/NewsSnippet';
 import Loader from '../Loader/Loader';
 
 const apiURL = 'https://newsapi.org/v2/top-headlines';
-// const apiURL = 'http://127.0.0.1:8075/everything';
 
 const apiKey = 'eef9fc46616347dbbfb3e24da3a43690';
 
@@ -23,8 +22,6 @@ type Options = {
   pageSize: number;
   page: number;
 };
-
-// -----------------------------------------------------------------------------------------------------
 
 class Content extends Component<ContentProps> {
   state: ContentState = {
@@ -103,7 +100,6 @@ class Content extends Component<ContentProps> {
         ) : (
           <div>
             {this.props.query && <h3>Search for: {this.props.query}</h3>}
-            {/* <div>{this.state.url}</div> */}
             <hr />
             {this.renderContent()}
           </div>
