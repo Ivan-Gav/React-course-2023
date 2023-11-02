@@ -1,16 +1,16 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
 
-type Props = {
+type EBProps = {
   fallback?: ReactNode;
   children?: ReactNode;
 };
 
-type State = {
+type EBState = {
   hasError: boolean;
 };
 
-class ErrorBoundary extends Component<Props, State> {
-  state: State = { hasError: false };
+class ErrorBoundary extends Component<EBProps, EBState> {
+  state: EBState = { hasError: false };
 
   static getDerivedStateFromError() {
     return { hasError: true };

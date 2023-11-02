@@ -1,28 +1,22 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import Content from './components/Content/Content';
 import Search from './components/Search/Search';
 
-class App extends Component {
-  state = {
-    query: localStorage.getItem('searchQuery') || '',
-  };
+function App() {
+  const [query, setQuery] = useState(localStorage.getItem('searchQuery') || '');
 
-  handleSearch = (data: string) => {
-    this.setState({
-      query: data,
-    });
+  const handleSearch = (data: string) => {
+    setQuery(data);
     localStorage.setItem('searchQuery', data);
   };
 
-  render() {
-    return (
-      <>
-        <Search onSubmit={this.handleSearch} query={this.state.query} />
-        <hr />
-        <Content query={this.state.query} />
-      </>
-    );
-  }
+  return (
+    <>
+      <Search onSubmit={handleSearch} query={query} />
+      <hr />
+      <Content query={query} />
+    </>
+  );
 }
 
 export default App;
