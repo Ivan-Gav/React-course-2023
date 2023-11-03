@@ -11,8 +11,8 @@ function ListSettings(props: ListSettingsProps) {
       <label htmlFor="pagesize">News per page: </label>
       <input
         type="number"
-        name="pagesize"
-        value={pageSize}
+        id="pagesize"
+        defaultValue={pageSize}
         onChange={(e) => onPageSizeChange(Number(e.target.value))}
         min={1}
         max={30}

@@ -10,8 +10,8 @@ type ContentProps = {
   pageSize?: number;
 };
 
-// const API_URL = 'https://newsapi.org/v2/top-headlines';
-const API_URL = 'http://127.0.0.1:8075/everything';
+const API_URL = 'https://newsapi.org/v2/top-headlines';
+// const API_URL = 'http://127.0.0.1:8075/everything';
 const API_KEY = 'eef9fc46616347dbbfb3e24da3a43690';
 
 function Content(props: ContentProps) {
@@ -22,19 +22,18 @@ function Content(props: ContentProps) {
   const [pages, setPages] = useState(1);
 
   const listProps: NewsApiRequest = {
-    apiKey: API_KEY,
     pageSize: props.pageSize,
     page: page,
     language: 'en',
     q: props.query || '',
   };
 
-  const { q, apiKey, pageSize } = listProps;
+  const { q, pageSize } = listProps;
 
   const onPageChange = (p: number) => setPage(p);
 
   const URL = (() => {
-    if (!API_URL || !apiKey) {
+    if (!API_URL || !API_KEY) {
       throw new Error('Invalid request');
     }
     let url = API_URL + '?';
@@ -49,9 +48,18 @@ function Content(props: ContentProps) {
   })();
 
   useEffect(() => {
+    setPage(1);
+  }, [pageSize]);
+
+  useEffect(() => {
     const apiCall = async (): Promise<void> => {
       setLoading(true);
-      fetch(URL)
+      fetch(URL, {
+        method: 'GET',
+        headers: {
+          'X-Api-Key': API_KEY,
+        },
+      })
         .then((res) => res.json())
         .then((data: NewsApiResponse) => {
           setContent(data);
