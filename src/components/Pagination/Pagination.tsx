@@ -39,7 +39,7 @@ function Pagination(props: PaginationProps) {
         ⏪
       </button>
       <span>
-        ` {page} of {pages} `
+        {page} of {pages}
       </span>
       <button
         type="button"
