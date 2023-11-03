@@ -23,7 +23,7 @@ function Content(props: ContentProps) {
 
   const listProps: NewsApiRequest = {
     apiKey: API_KEY,
-    pageSize: 6,
+    pageSize: props.pageSize,
     page: page,
     language: 'en',
     q: props.query || '',
@@ -76,10 +76,12 @@ function Content(props: ContentProps) {
             {q && <h3>Search for: {q}</h3>}
             <h3>Get from: {URL}</h3>
             {content?.totalResults && (
-              <h3>Total results: {content.totalResults}</h3>
+              <>
+                <h3>Total results: {content.totalResults}</h3>
+                <hr />
+                <NewsList {...content} />
+              </>
             )}
-            <hr />
-            {content && <NewsList {...content} />}
           </div>
           <Pagination page={page} pages={pages} onPageChange={onPageChange} />
         </div>
