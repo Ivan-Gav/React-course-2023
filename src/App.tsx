@@ -8,6 +8,9 @@ const DEFAULT_PAGE_SIZE = 6;
 
 function App() {
   const [query, setQuery] = useState(localStorage.getItem('searchQuery') || '');
+  const [pageSize, setPageSize] = useState(
+    localStorage.getItem('pageSize') || DEFAULT_PAGE_SIZE.toString()
+  );
 
   const [params, setParams] = useSearchParams();
 
@@ -17,8 +20,9 @@ function App() {
   };
 
   const handleListSettings = (data: number) => {
+    setPageSize(data.toString());
+    localStorage.setItem('pageSize', data.toString());
     setParams((prev) => {
-      prev.set('pageSize', data.toString());
       prev.set('page', '1');
       return prev;
     });
@@ -37,13 +41,13 @@ function App() {
       <br />
       <ListSettings
         onPageSizeChange={handleListSettings}
-        pageSize={Number(params.get('pageSize')) || DEFAULT_PAGE_SIZE}
+        pageSize={Number(pageSize)}
       />
       <hr />
       <Content
         query={query}
         onPageChange={handlePage}
-        pageSize={Number(params.get('pageSize')) || DEFAULT_PAGE_SIZE}
+        pageSize={Number(pageSize)}
         page={Number(params.get('page')) || 1}
       />
     </>
