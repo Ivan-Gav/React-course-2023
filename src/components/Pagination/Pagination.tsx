@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 type PaginationProps = {
   page: number;
   pages: number;
@@ -8,50 +6,42 @@ type PaginationProps = {
 
 function Pagination(props: PaginationProps) {
   const { page: initialPage, pages, onPageChange } = props;
-  const [page, setPage] = useState(initialPage);
-  const [isDisabled, setIsDisabled] = useState({ prev: true, next: true });
 
-  useEffect(() => {
-    setIsDisabled({
-      prev: page === 1,
-      next: page === pages,
-    });
-  }, [pages, page]);
-
-  useEffect(() => {
-    onPageChange(page);
-  }, [page, onPageChange]);
+  const isDisabled = {
+    prev: initialPage === 1,
+    next: initialPage === pages,
+  };
 
   return (
     <div>
       <button
         type="button"
         disabled={isDisabled.prev}
-        onClick={() => setPage(1)}
+        onClick={() => onPageChange(1)}
       >
         ⏮️
       </button>
       <button
         type="button"
         disabled={isDisabled.prev}
-        onClick={() => setPage((current) => current - 1)}
+        onClick={() => onPageChange(initialPage - 1)}
       >
         ⏪
       </button>
       <span>
-        {page} of {pages}
+        {initialPage} of {pages}
       </span>
       <button
         type="button"
         disabled={isDisabled.next}
-        onClick={() => setPage((current) => current + 1)}
+        onClick={() => onPageChange(initialPage + 1)}
       >
         ⏩
       </button>
       <button
         type="button"
         disabled={isDisabled.next}
-        onClick={() => setPage(pages)}
+        onClick={() => onPageChange(pages)}
       >
         ⏭️
       </button>

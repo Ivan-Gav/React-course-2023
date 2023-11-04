@@ -7,30 +7,30 @@ import Loader from '../Loader/Loader';
 
 type ContentProps = {
   query?: string;
-  pageSize?: number;
+  pageSize: number;
+  page: number;
+  onPageChange: (p: number) => void;
 };
 
-const API_URL = 'https://newsapi.org/v2/top-headlines';
-// const API_URL = 'http://127.0.0.1:8075/everything';
+// const API_URL = 'https://newsapi.org/v2/top-headlines';
+const API_URL = 'http://127.0.0.1:8075/everything';
 const API_KEY = 'eef9fc46616347dbbfb3e24da3a43690';
 
 function Content(props: ContentProps) {
+  const { query, pageSize, page, onPageChange } = props;
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<null | NewsApiResponse>(null);
 
-  const [page, setPage] = useState(1);
   const [pages, setPages] = useState(1);
 
   const listProps: NewsApiRequest = {
-    pageSize: props.pageSize,
-    page: page,
     language: 'en',
-    q: props.query || '',
+    q: query,
+    pageSize: pageSize,
+    page: page,
   };
 
-  const { q, pageSize } = listProps;
-
-  const onPageChange = (p: number) => setPage(p);
+  const { q } = listProps;
 
   const URL = (() => {
     if (!API_URL || !API_KEY) {
@@ -46,10 +46,6 @@ function Content(props: ContentProps) {
     url = url.slice(0, -1);
     return url;
   })();
-
-  useEffect(() => {
-    setPage(1);
-  }, [pageSize]);
 
   useEffect(() => {
     const apiCall = async (): Promise<void> => {
@@ -81,7 +77,7 @@ function Content(props: ContentProps) {
       ) : (
         <div>
           <div>
-            {q && <h3>Search for: {q}</h3>}
+            {q ?? <h3>Search for: {q}</h3>}
             <h3>Get from: {URL}</h3>
             {content?.totalResults && (
               <>
