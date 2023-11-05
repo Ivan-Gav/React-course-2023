@@ -49,6 +49,8 @@ function Content(props: ContentProps) {
     return url;
   })();
 
+  const isDetailsOpen = () => location.pathname !== '/';
+
   useEffect(() => {
     const controller = new AbortController();
     const apiCall = async (): Promise<void> => {
@@ -70,12 +72,11 @@ function Content(props: ContentProps) {
         });
     };
 
-    apiCall();
+    if (!isDetailsOpen()) apiCall();
 
     return () => controller.abort();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [URL, pageSize]);
-
-  const isDetailsOpen = () => location.pathname !== '/';
 
   const closeDetails = () => {
     if (isDetailsOpen()) {
@@ -97,9 +98,8 @@ function Content(props: ContentProps) {
                 closeDetails();
               }}
             >
-              {q && <h3>Search for: {q}</h3>}
-              <h3>Get from: {URL}</h3>
-              {content?.totalResults && (
+              {!!q && <h3>Search for: {q}</h3>}
+              {content?.totalResults ? (
                 <>
                   <h3>Total results: {content.totalResults}</h3>
                   <hr />
@@ -112,6 +112,8 @@ function Content(props: ContentProps) {
                     />
                   )}
                 </>
+              ) : (
+                <h3>Nothing found</h3>
               )}
             </div>
             <Outlet />
