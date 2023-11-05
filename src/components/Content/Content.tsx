@@ -51,9 +51,11 @@ function Content(props: ContentProps) {
   })();
 
   useEffect(() => {
+    const controller = new AbortController();
     const apiCall = async (): Promise<void> => {
       setLoading(true);
       fetch(URL, {
+        signal: controller.signal,
         method: 'GET',
         headers: {
           'X-Api-Key': API_KEY,
@@ -70,6 +72,8 @@ function Content(props: ContentProps) {
     };
 
     apiCall();
+
+    return () => controller.abort();
   }, [URL, pageSize]);
 
   const closeDetails = () => {
@@ -86,23 +90,30 @@ function Content(props: ContentProps) {
         <Loader />
       ) : (
         <div>
-          <div
-            onClick={() => {
-              closeDetails();
-            }}
-          >
-            {q ?? <h3>Search for: {q}</h3>}
-            <h3>Get from: {URL}</h3>
-            {content?.totalResults && (
-              <>
-                <h3>Total results: {content.totalResults}</h3>
-                <hr />
-                <NewsList {...content} />
-              </>
-            )}
+          <div className="content-wrapper">
+            <div
+              className="content-list-wrapper"
+              onClick={() => {
+                closeDetails();
+              }}
+            >
+              {q ?? <h3>Search for: {q}</h3>}
+              <h3>Get from: {URL}</h3>
+              {content?.totalResults && (
+                <>
+                  <h3>Total results: {content.totalResults}</h3>
+                  <hr />
+                  <NewsList {...content} />
+                  <Pagination
+                    page={page}
+                    pages={pages}
+                    onPageChange={onPageChange}
+                  />
+                </>
+              )}
+            </div>
+            <Outlet />
           </div>
-          <Outlet />
-          <Pagination page={page} pages={pages} onPageChange={onPageChange} />
         </div>
       )}
     </div>
