@@ -1,3 +1,4 @@
+import { useLocation, useNavigate } from 'react-router-dom';
 import NewsApiArticle from '../../interface/newsapiarticle';
 
 type NewsSnippetProps = {
@@ -7,15 +8,24 @@ type NewsSnippetProps = {
 
 function NewsSnippet(props: NewsSnippetProps) {
   const item = props.newsItem;
+  const details = encodeURIComponent(item.title.trim());
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const isDetailsOpen = () => location.pathname !== '/';
+
+  const onClick = () => {
+    if (!isDetailsOpen()) {
+      console.log('on my way');
+      navigate(`${details}`);
+    }
+  };
 
   return (
-    <div>
+    <div onClick={onClick}>
       <h4>{item.title}</h4>
       <p>Source: {item.source.name}</p>
-      {item.author && <p>Author: {item.author}</p>}
       {item.publishedAt && <p>Date: {item.publishedAt.slice(0, 10)}</p>}
-      {item.description && <p>{item.description}</p>}
-      <a href={item.url}>Read</a>
       <hr />
     </div>
   );

@@ -4,6 +4,7 @@ import Pagination from '../Pagination/Pagination';
 import NewsApiResponse from '../../interface/newsapiresponse';
 import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 type ContentProps = {
   query?: string;
@@ -20,8 +21,10 @@ function Content(props: ContentProps) {
   const { query, pageSize, page, onPageChange } = props;
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<null | NewsApiResponse>(null);
-
   const [pages, setPages] = useState(1);
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const listProps: NewsApiRequest = {
     language: 'en',
@@ -69,6 +72,13 @@ function Content(props: ContentProps) {
     apiCall();
   }, [URL, pageSize]);
 
+  const closeDetails = () => {
+    if (location.pathname !== '/') {
+      console.log('get back');
+      navigate(-1);
+    }
+  };
+
   return (
     <div>
       <h2>News</h2>
@@ -76,7 +86,11 @@ function Content(props: ContentProps) {
         <Loader />
       ) : (
         <div>
-          <div>
+          <div
+            onClick={() => {
+              closeDetails();
+            }}
+          >
             {q ?? <h3>Search for: {q}</h3>}
             <h3>Get from: {URL}</h3>
             {content?.totalResults && (
@@ -87,6 +101,7 @@ function Content(props: ContentProps) {
               </>
             )}
           </div>
+          <Outlet />
           <Pagination page={page} pages={pages} onPageChange={onPageChange} />
         </div>
       )}
