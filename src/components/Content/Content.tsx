@@ -75,9 +75,10 @@ function Content(props: ContentProps) {
     return () => controller.abort();
   }, [URL, pageSize]);
 
+  const isDetailsOpen = () => location.pathname !== '/';
+
   const closeDetails = () => {
-    if (location.pathname !== '/') {
-      console.log('get back');
+    if (isDetailsOpen()) {
       navigate(-1);
     }
   };
@@ -96,18 +97,20 @@ function Content(props: ContentProps) {
                 closeDetails();
               }}
             >
-              {q ?? <h3>Search for: {q}</h3>}
+              {q && <h3>Search for: {q}</h3>}
               <h3>Get from: {URL}</h3>
               {content?.totalResults && (
                 <>
                   <h3>Total results: {content.totalResults}</h3>
                   <hr />
                   <NewsList {...content} />
-                  <Pagination
-                    page={page}
-                    pages={pages}
-                    onPageChange={onPageChange}
-                  />
+                  {!isDetailsOpen() && (
+                    <Pagination
+                      page={page}
+                      pages={pages}
+                      onPageChange={onPageChange}
+                    />
+                  )}
                 </>
               )}
             </div>

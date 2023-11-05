@@ -1,5 +1,5 @@
 function Loader() {
-  return <h1>🔄 Loading(no fancy CSS spinners here)...</h1>;
+  return <h1 className="loader">🔄 Loading(no fancy CSS spinners here)...</h1>;
 }
 
 export default Loader;

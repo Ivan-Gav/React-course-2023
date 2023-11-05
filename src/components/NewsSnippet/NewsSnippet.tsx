@@ -16,7 +16,6 @@ function NewsSnippet(props: NewsSnippetProps) {
 
   const onClick = () => {
     if (!isDetailsOpen()) {
-      console.log('on my way');
       navigate(`${details}`);
     }
   };

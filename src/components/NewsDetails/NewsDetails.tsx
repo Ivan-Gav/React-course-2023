@@ -49,15 +49,24 @@ function NewsDetails() {
           {article.publishedAt && (
             <p>Date: {article.publishedAt.slice(0, 10)}</p>
           )}
-          {article.urlToImage && <img src={article.urlToImage} />}
+          {article.urlToImage && (
+            <img src={article.urlToImage} loading="lazy" alt="" />
+          )}
           {article.description && <p>{article.description}</p>}
           <a href={article.url}>Read full article on {article.source.name}</a>
+          <br />
+          <button className="close-button" onClick={() => navigate(-1)}>
+            Close
+          </button>
         </div>
       ) : (
-        <h4>Article not found</h4>
+        <div>
+          <h4>Article not found</h4>
+          <button className="close-button" onClick={() => navigate(-1)}>
+            Close
+          </button>
+        </div>
       )}
-      <br />
-      <button onClick={() => navigate(-1)}> Close </button>
     </div>
   );
 }

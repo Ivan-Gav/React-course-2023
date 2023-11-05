@@ -25,3 +25,21 @@ body {
   max-width: 100%;
   max-height: 300px;
 }
+
+.pagination-container {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button {
+  margin-top: 20px;
+}

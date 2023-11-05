@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Content from '.././components/Content/Content';
 import Search from '.././components/Search/Search';
 import ListSettings from '.././components/ListSettings/ListSettings';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const DEFAULT_PAGE_SIZE = 6;
 
@@ -11,16 +11,19 @@ function MainPage() {
   const [pageSize, setPageSize] = useState(
     localStorage.getItem('pageSize') || DEFAULT_PAGE_SIZE.toString()
   );
+  const navigate = useNavigate();
 
   const [params, setParams] = useSearchParams();
 
   const handleSearch = (data: string) => {
     setQuery(data);
+    navigate('/');
     localStorage.setItem('searchQuery', data);
   };
 
   const handleListSettings = (data: number) => {
     setPageSize(data.toString());
+    navigate('/');
     localStorage.setItem('pageSize', data.toString());
     setParams((prev) => {
       prev.set('page', '1');
