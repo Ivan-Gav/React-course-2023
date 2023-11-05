@@ -5,9 +5,8 @@ import Loader from '../Loader/Loader';
 
 import { useNavigate, useParams } from 'react-router-dom';
 
-// const API_URL = 'https://newsapi.org/v2/top-headlines';
-const API_URL = 'http://127.0.0.1:8075/everything';
-const API_KEY = 'eef9fc46616347dbbfb3e24da3a43690';
+const apiURl = import.meta.env.VITE_API_URL;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 function NewsDetails() {
   const [loading, setLoading] = useState(false);
@@ -17,7 +16,7 @@ function NewsDetails() {
   const param = useParams();
 
   useEffect(() => {
-    const URL = `${API_URL}?language=en&q=${encodeURIComponent(
+    const URL = `${apiURl}?language=en&q=${encodeURIComponent(
       (param.article as string).trim()
     )}`;
     const apiCall = async (): Promise<void> => {
@@ -25,7 +24,7 @@ function NewsDetails() {
       fetch(URL, {
         method: 'GET',
         headers: {
-          'X-Api-Key': API_KEY,
+          'X-Api-Key': apiKey,
         },
       })
         .then((res) => res.json())

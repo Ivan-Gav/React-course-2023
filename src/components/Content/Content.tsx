@@ -13,9 +13,8 @@ type ContentProps = {
   onPageChange: (p: number) => void;
 };
 
-// const API_URL = 'https://newsapi.org/v2/top-headlines';
-const API_URL = 'http://127.0.0.1:8075/everything';
-const API_KEY = 'eef9fc46616347dbbfb3e24da3a43690';
+const apiURl = import.meta.env.VITE_API_URL;
+const apiKey = import.meta.env.VITE_API_KEY;
 
 function Content(props: ContentProps) {
   const { query, pageSize, page, onPageChange } = props;
@@ -36,10 +35,10 @@ function Content(props: ContentProps) {
   const { q } = listProps;
 
   const URL = (() => {
-    if (!API_URL || !API_KEY) {
+    if (!apiURl || !apiKey) {
       throw new Error('Invalid request');
     }
-    let url = API_URL + '?';
+    let url = apiURl + '?';
     for (const key in listProps) {
       let value = listProps[key as keyof NewsApiRequest];
       value =
@@ -58,7 +57,7 @@ function Content(props: ContentProps) {
         signal: controller.signal,
         method: 'GET',
         headers: {
-          'X-Api-Key': API_KEY,
+          'X-Api-Key': apiKey,
         },
       })
         .then((res) => res.json())
