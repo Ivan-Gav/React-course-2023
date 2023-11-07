@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import Content from '.././components/Content/Content';
 import Search from '.././components/Search/Search';
 import ListSettings from '.././components/ListSettings/ListSettings';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import SearchContext from '../contexts/SearchContext';
 
 const DEFAULT_PAGE_SIZE = 6;
 
@@ -40,19 +41,21 @@ function MainPage() {
 
   return (
     <>
-      <Search onSubmit={handleSearch} query={query} />
-      <br />
-      <ListSettings
-        onPageSizeChange={handleListSettings}
-        pageSize={Number(pageSize)}
-      />
-      <hr />
-      <Content
-        query={query}
-        onPageChange={handlePage}
-        pageSize={Number(pageSize)}
-        page={Number(params.get('page')) || 1}
-      />
+      <SearchContext.Provider value={query}>
+        <Search onSubmit={handleSearch} />
+        <br />
+        <ListSettings
+          onPageSizeChange={handleListSettings}
+          pageSize={Number(pageSize)}
+        />
+        <hr />
+        <Content
+          query={query}
+          onPageChange={handlePage}
+          pageSize={Number(pageSize)}
+          page={Number(params.get('page')) || 1}
+        />
+      </SearchContext.Provider>
     </>
   );
 }

@@ -5,6 +5,7 @@ import NewsApiResponse from '../../interface/newsapiresponse';
 import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import ContentContext from '../../contexts/ContentContext';
 
 type ContentProps = {
   query?: string;
@@ -103,7 +104,9 @@ function Content(props: ContentProps) {
                 <>
                   <h3>Total results: {content.totalResults}</h3>
                   <hr />
-                  <NewsList {...content} />
+                  <ContentContext.Provider value={content}>
+                    <NewsList />
+                  </ContentContext.Provider>
                   {!isDetailsOpen() && (
                     <Pagination
                       page={page}

@@ -1,13 +1,15 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState, useContext } from 'react';
+import SearchContext from '../../contexts/SearchContext';
 
 type SearchProps = {
-  query: string;
+  // query: string;
   onSubmit: (s: string) => void;
 };
 
 function Search(props: SearchProps) {
+  const inputquery = useContext(SearchContext);
   const [hasError, setHasError] = useState(false);
-  const [query, setQuery] = useState(props.query);
+  const [query, setQuery] = useState(inputquery);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

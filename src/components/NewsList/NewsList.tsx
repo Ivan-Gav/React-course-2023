@@ -1,11 +1,14 @@
-import NewsApiResponse from '../../interface/newsapiresponse';
+import { useContext } from 'react';
 import NewsApiArticle from '../../interface/newsapiarticle';
 import NewsSnippet from '../NewsSnippet/NewsSnippet';
+import ContentContext from '../../contexts/ContentContext';
 
-function NewsList(props: NewsApiResponse) {
+function NewsList() {
+  const content = useContext(ContentContext);
+
   const renderList = () => {
-    if (props && 'articles' in props && props.articles?.length) {
-      return props.articles.map((item: NewsApiArticle) => {
+    if (content && 'articles' in content && content.articles?.length) {
+      return content.articles.map((item: NewsApiArticle) => {
         return (
           <NewsSnippet
             newsItem={item}
