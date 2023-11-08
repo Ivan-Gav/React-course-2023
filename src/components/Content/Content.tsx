@@ -22,6 +22,7 @@ function Content(props: ContentProps) {
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<null | NewsApiResponse>(null);
   const [pages, setPages] = useState(1);
+  const [hasError, setHasError] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -63,11 +64,16 @@ function Content(props: ContentProps) {
           'X-Api-Key': apiKey,
         },
       })
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) setHasError(true);
+          return res.json();
+        })
         .then((data: NewsApiResponse) => {
           setContent(data);
           if (data.totalResults && pageSize) {
             setPages(Math.ceil(data.totalResults / pageSize));
+          } else {
+            setHasError(true);
           }
           setLoading(false);
         });
@@ -78,6 +84,12 @@ function Content(props: ContentProps) {
     return () => controller.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [URL, pageSize]);
+
+  useEffect(() => {
+    if (hasError) {
+      throw new Error('Error by loading data from API');
+    }
+  }, [hasError]);
 
   const closeDetails = () => {
     if (isDetailsOpen()) {
@@ -100,7 +112,7 @@ function Content(props: ContentProps) {
               }}
             >
               {!!q && <h3>Search for: {q}</h3>}
-              {content?.totalResults ? (
+              {!!content?.totalResults && (
                 <>
                   <h3>Total results: {content.totalResults}</h3>
                   <hr />
@@ -115,8 +127,6 @@ function Content(props: ContentProps) {
                     />
                   )}
                 </>
-              ) : (
-                <h3>Nothing found</h3>
               )}
             </div>
             <Outlet />

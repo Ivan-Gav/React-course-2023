@@ -23,7 +23,7 @@ function Search(props: SearchProps) {
 
   useEffect(() => {
     if (hasError) {
-      throw new Error('I will kill your app!');
+      throw new Error('Test Error button clicked');
     }
   }, [hasError]);
 

@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 
 type EBProps = {
   fallback?: ReactNode;
@@ -16,9 +16,9 @@ class ErrorBoundary extends Component<EBProps, EBState> {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, info: ErrorInfo) {
-    console.log(error, info);
-  }
+  // componentDidCatch(error: Error, info: ErrorInfo) {
+  //   console.log(error, info);
+  // }
 
   render() {
     if (this.state.hasError) {

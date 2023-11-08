@@ -11,6 +11,7 @@ const apiKey = import.meta.env.VITE_API_KEY;
 function NewsDetails() {
   const [loading, setLoading] = useState(false);
   const [article, setArticle] = useState<null | NewsApiArticle>(null);
+  const [hasError, setHasError] = useState(false);
 
   const navigate = useNavigate();
   const param = useParams();
@@ -27,15 +28,31 @@ function NewsDetails() {
           'X-Api-Key': apiKey,
         },
       })
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) setHasError(true);
+          return res.json();
+        })
         .then((data: NewsApiResponse) => {
-          if (data.articles && data.articles[0]) setArticle(data.articles[0]);
+          if (data.articles && data.articles[0]) {
+            setArticle(data.articles[0]);
+          } else {
+            setHasError(true);
+          }
           setLoading(false);
-        });
+        })
+        .catch((err) =>
+          console.log(`Server error response caught: ${err.message}`)
+        );
     };
 
     apiCall();
   }, [param.article]);
+
+  useEffect(() => {
+    if (hasError) {
+      throw new Error('Page Not Found');
+    }
+  }, [hasError]);
 
   return (
     <div className="article">
