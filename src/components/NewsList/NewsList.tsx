@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+
 import NewsApiArticle from '../../interface/newsapiarticle';
 import NewsSnippet from '../NewsSnippet/NewsSnippet';
 import ContentContext from '../../contexts/ContentContext';

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import NewsApiArticle from '../../interface/newsapiarticle';
 import NewsApiResponse from '../../interface/newsapiresponse';
 import Loader from '../Loader/Loader';
-
-import { useNavigate, useParams } from 'react-router-dom';
 
 const apiURl = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_API_KEY;

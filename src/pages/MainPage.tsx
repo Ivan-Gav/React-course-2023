@@ -42,6 +42,7 @@ function MainPage() {
   return (
     <>
       <SearchContext.Provider value={query}>
+        <h1>News Portal</h1>
         <Search onSubmit={handleSearch} />
         <br />
         <ListSettings

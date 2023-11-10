@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+
 import NewsApiArticle from '../../interface/newsapiarticle';
 
 type NewsSnippetProps = {

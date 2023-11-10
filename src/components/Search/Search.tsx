@@ -1,4 +1,5 @@
 import { FormEvent, useEffect, useState, useContext } from 'react';
+
 import SearchContext from '../../contexts/SearchContext';
 
 type SearchProps = {

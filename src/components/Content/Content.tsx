@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+
 import NewsList from '../NewsList/NewsList';
 import Pagination from '../Pagination/Pagination';
 import NewsApiResponse from '../../interface/newsapiresponse';
 import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import ContentContext from '../../contexts/ContentContext';
 
 type ContentProps = {
@@ -54,11 +55,11 @@ function Content(props: ContentProps) {
   const isDetailsOpen = () => location.pathname !== '/';
 
   useEffect(() => {
-    const controller = new AbortController();
+    // const controller = new AbortController();
     const apiCall = async (): Promise<void> => {
       setLoading(true);
       fetch(URL, {
-        signal: controller.signal,
+        // signal: controller.signal,
         method: 'GET',
         headers: {
           'X-Api-Key': apiKey,
@@ -81,7 +82,7 @@ function Content(props: ContentProps) {
 
     if (!isDetailsOpen()) apiCall();
 
-    return () => controller.abort();
+    // return () => controller.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [URL, pageSize]);
 
