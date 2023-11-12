@@ -23,15 +23,15 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">88% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">15/15</span>
+            <span class="fraction">22/25</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">80% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">4/4</span>
+            <span class="fraction">4/5</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -41,9 +41,9 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">88% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">15/15</span>
+            <span class="fraction">22/25</span>
           </div>
         </div>
         <p class="quiet">
@@ -74,34 +74,64 @@
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
-<a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L16'></a><a href='#L16'>16</a>
+<a name='L17'></a><a href='#L17'>17</a>
+<a name='L18'></a><a href='#L18'>18</a>
+<a name='L19'></a><a href='#L19'>19</a>
+<a name='L20'></a><a href='#L20'>20</a>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
-<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { http, HttpResponse } from 'msw';
-import { mockContent4Cards, mockContent1Card } from './mockdata';
+import {
+  mockContent10Cards,
+  mockContent1Card,
+  errorResponse,
+} from './mockdata';
 &nbsp;
 const apiURl = import.meta.env.VITE_API_URL;
 &nbsp;
 export const handlers = [
+  http.get(`${apiURl}/invalid-path`, () =&gt; {
+<span class="cstat-no" title="statement not covered" >    return HttpResponse.json(errorResponse);</span>
+  }),
   http.get(apiURl, ({ request }) =&gt; {
     const url = new URL(request.url);
+    if (url.pathname === 'invalid-path') <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >      return HttpResponse.json(errorResponse);</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
     const q = url.searchParams.get('q');
     if (q &amp;&amp; q !== '') {
       return HttpResponse.json(mockContent1Card);
     }
-    return HttpResponse.json(mockContent4Cards);
+    return HttpResponse.json(mockContent10Cards);
   }),
 ];
 &nbsp;</pre></td></tr></table></pre>
@@ -118,7 +148,7 @@ export const handlers = [
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-11-12T14:35:17.990Z
+      at 2023-11-12T20:58:39.766Z
     </div>
     <script src="../../prettify.js"></script>
     <script>

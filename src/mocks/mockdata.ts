@@ -464,3 +464,9 @@ export const mockArticle: NewsApiArticle = {
   publishedAt: '2023-11-09T11:54:00Z',
   content: 'test content',
 };
+
+export const errorResponse: NewsApiResponse = {
+  status: 'error',
+  code: 404,
+  message: 'Houston, we have a problem',
+};

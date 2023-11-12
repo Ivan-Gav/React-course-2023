@@ -5,7 +5,6 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import NewsDetails from '../components/NewsDetails/NewsDetails';
 
 import { mockContent1Card } from '../mocks/mockdata';
-// import NewsApiResponse from '../interface/newsapiresponse';
 
 describe('NewsDetails', () => {
   if (!mockContent1Card.articles) throw new Error('Incorrect mock data');

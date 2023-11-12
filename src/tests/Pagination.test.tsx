@@ -1,17 +1,8 @@
 import { describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-// import { useSearchParams } from 'react-router-dom';
 
 import Pagination from '../components/Pagination/Pagination';
 
-// const handlePage = (data: number) => {
-//   setParams((prev) => {
-//     prev.set('page', data.toString());
-//     return prev;
-//   });
-// };
-
-// type PaginationHandler = Pick<PaginationProps, 'onPageChange'>;
 type PaginationHandler = (n: number) => void;
 
 describe('Pagination', () => {
