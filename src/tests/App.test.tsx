@@ -22,17 +22,4 @@ describe('App', () => {
 
     expect(newsDetails).toHaveTextContent(title);
   });
-
-  it('triggers an additional API call to fetch detailed information by clicking a card', async () => {
-    render(<App />);
-    const newsSnippets = await screen.findAllByTestId('news-snippet');
-    const newsSnippet = newsSnippets[0];
-    const title = newsSnippet.firstChild?.textContent || '';
-
-    fireEvent.click(newsSnippet);
-
-    const newsDetails = await screen.findByTestId('news-details');
-
-    expect(newsDetails).toHaveTextContent(title);
-  });
 });

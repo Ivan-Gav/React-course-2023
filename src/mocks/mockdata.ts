@@ -421,6 +421,29 @@ export const mockContent10Cards: NewsApiResponse = {
   ],
 };
 
+export const mockContent1Card: NewsApiResponse = {
+  status: 'ok',
+  totalResults: 79,
+  articles: [
+    {
+      source: {
+        id: 'mock content 1 card',
+        name: 'mockContent1Card',
+      },
+      author: 'Ivan',
+      title: 'Testing detailed card component',
+      description:
+        'Mock server response has been successfully recieved in order to check the Detailed Card (NewsDetails) component',
+      url: 'https://test.com',
+      urlToImage:
+        'https://c.ndtvimg.com/2023-10/48uafj1_devon-conway-afp_625x300_18_October_23.jpg?im=FitAndFill,algorithm=dnn,width=1200,height=675',
+      publishedAt: '2023-11-12T12:21:55Z',
+      content:
+        'Mock server response has been successfully recieved in order to check the Detailed Card (NewsDetails) component',
+    },
+  ],
+};
+
 export const mockContentNoCards: NewsApiResponse = {
   status: 'ok',
   totalResults: 79,
