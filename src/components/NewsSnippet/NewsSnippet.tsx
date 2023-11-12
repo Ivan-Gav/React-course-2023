@@ -22,7 +22,7 @@ function NewsSnippet(props: NewsSnippetProps) {
   };
 
   return (
-    <div onClick={onClick} className="news_item">
+    <div onClick={onClick} className="news_item" data-testid="news-snippet">
       <h4>{item.title}</h4>
       <p>Source: {item.source.name}</p>
       {item.publishedAt && <p>Date: {item.publishedAt.slice(0, 10)}</p>}

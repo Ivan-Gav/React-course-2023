@@ -55,11 +55,9 @@ function Content(props: ContentProps) {
   const isDetailsOpen = () => location.pathname !== '/';
 
   useEffect(() => {
-    // const controller = new AbortController();
     const apiCall = async (): Promise<void> => {
       setLoading(true);
       fetch(URL, {
-        // signal: controller.signal,
         method: 'GET',
         headers: {
           'X-Api-Key': apiKey,
@@ -81,8 +79,6 @@ function Content(props: ContentProps) {
     };
 
     if (!isDetailsOpen()) apiCall();
-
-    // return () => controller.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [URL, pageSize]);
 
@@ -116,6 +112,7 @@ function Content(props: ContentProps) {
               {!!content?.totalResults && (
                 <>
                   <h3>Total results: {content.totalResults}</h3>
+                  <h4>Request URL: {URL}</h4>
                   <hr />
                   <ContentContext.Provider value={content}>
                     <NewsList />

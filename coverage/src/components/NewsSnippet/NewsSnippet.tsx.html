@@ -25,27 +25,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">32.35% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">11/34</span>
+            <span class="fraction">34/34</span>
           </div>
 
           <div class="fl pad1y space-right2">
             <span class="strong">100% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/0</span>
+            <span class="fraction">3/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">0/1</span>
+            <span class="fraction">3/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">32.35% </span>
+            <span class="strong">100% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">11/34</span>
+            <span class="fraction">34/34</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line low"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,29 +104,29 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useLocation, useNavigate } from 'react-router-dom';
@@ -138,29 +138,29 @@ type NewsSnippetProps = {
   key: string;
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function NewsSnippet(props: NewsSnippetProps) {</span></span>
-<span class="cstat-no" title="statement not covered" >  const item = props.newsItem;</span>
-<span class="cstat-no" title="statement not covered" >  const details = encodeURIComponent(item.title.trim());</span>
-<span class="cstat-no" title="statement not covered" >  const location = useLocation();</span>
-<span class="cstat-no" title="statement not covered" >  const navigate = useNavigate();</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const isDetailsOpen = () =&gt; location.pathname !== '/';</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const onClick = () =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (!isDetailsOpen()) {</span>
-<span class="cstat-no" title="statement not covered" >      navigate(`${details}`);</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >  };</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  return (</span>
-<span class="cstat-no" title="statement not covered" >    &lt;div onClick={onClick} className="news_item"&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;h4&gt;{item.title}&lt;/h4&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;p&gt;Source: {item.source.name}&lt;/p&gt;</span>
-<span class="cstat-no" title="statement not covered" >      {item.publishedAt &amp;&amp; &lt;p&gt;Date: {item.publishedAt.slice(0, 10)}&lt;/p&gt;}</span>
-<span class="cstat-no" title="statement not covered" >      &lt;hr /&gt;</span>
-<span class="cstat-no" title="statement not covered" >    &lt;/div&gt;</span>
-<span class="cstat-no" title="statement not covered" >  );</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+function NewsSnippet(props: NewsSnippetProps) {
+  const item = props.newsItem;
+  const details = encodeURIComponent(item.title.trim());
+  const location = useLocation();
+  const navigate = useNavigate();
+&nbsp;
+  const isDetailsOpen = () =&gt; location.pathname !== '/';
+&nbsp;
+  const onClick = () =&gt; {
+    if (!isDetailsOpen()) {
+      navigate(`${details}`);
+    }
+  };
+&nbsp;
+  return (
+    &lt;div onClick={onClick} className="news_item" data-testid="news-snippet"&gt;
+      &lt;h4&gt;{item.title}&lt;/h4&gt;
+      &lt;p&gt;Source: {item.source.name}&lt;/p&gt;
+      {item.publishedAt &amp;&amp; &lt;p&gt;Date: {item.publishedAt.slice(0, 10)}&lt;/p&gt;}
+      &lt;hr /&gt;
+    &lt;/div&gt;
+  );
+}
 &nbsp;
 export default NewsSnippet;
 &nbsp;</pre></td></tr></table></pre>
@@ -177,7 +177,7 @@ export default NewsSnippet;
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-11-10T12:41:07.907Z
+      at 2023-11-11T18:07:57.442Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

@@ -59,7 +59,7 @@ function NewsDetails() {
       {loading ? (
         <Loader />
       ) : article ? (
-        <div>
+        <div data-testid="news-details">
           <h4>{article.title}</h4>
           <p>Source: {article.source.name}</p>
           {article.author && <p>Author: {article.author}</p>}

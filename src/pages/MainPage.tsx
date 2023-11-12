@@ -5,7 +5,7 @@ import Search from '.././components/Search/Search';
 import ListSettings from '.././components/ListSettings/ListSettings';
 import SearchContext from '../contexts/SearchContext';
 
-const DEFAULT_PAGE_SIZE = 6;
+const DEFAULT_PAGE_SIZE = 4;
 
 function MainPage() {
   const [query, setQuery] = useState(localStorage.getItem('searchQuery') || '');

@@ -1,14 +1,14 @@
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import MainPage from '../pages/MainPage';
 
 const MockMainPage = () => {
   return (
-    <BrowserRouter>
+    <MemoryRouter>
       <MainPage />
-    </BrowserRouter>
+    </MemoryRouter>
   );
 };
 
@@ -17,6 +17,14 @@ describe('Search', () => {
 
   beforeAll(() => {
     bufferLS = localStorage.getItem('searchQuery') || '';
+  });
+
+  afterAll(() => {
+    if (bufferLS) {
+      localStorage.setItem('searchQuery', bufferLS);
+    } else {
+      localStorage.removeItem('searchQuery');
+    }
   });
 
   it('saves the entered value to the local storage on clicking the Search button', () => {
@@ -38,13 +46,5 @@ describe('Search', () => {
     render(<MockMainPage />);
     const serchField = screen.getByRole('textbox');
     expect(serchField).toHaveValue(testQueryLoading);
-  });
-
-  afterAll(() => {
-    if (bufferLS) {
-      localStorage.setItem('searchQuery', bufferLS);
-    } else {
-      localStorage.removeItem('searchQuery');
-    }
   });
 });
