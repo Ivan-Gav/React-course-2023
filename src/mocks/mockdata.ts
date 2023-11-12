@@ -1,3 +1,4 @@
+import NewsApiArticle from '../interface/newsapiarticle';
 import NewsApiResponse from '../interface/newsapiresponse';
 
 export const mockResponse: NewsApiResponse = {
@@ -448,4 +449,18 @@ export const mockContentNoCards: NewsApiResponse = {
   status: 'ok',
   totalResults: 79,
   articles: [],
+};
+
+export const mockArticle: NewsApiArticle = {
+  source: {
+    id: 'reuters',
+    name: 'Reuters',
+  },
+  author: 'test author',
+  title: 'Test title',
+  description: 'test description',
+  url: 'https://www.test.com/',
+  urlToImage: 'https://www.test.com/testimg.jpg',
+  publishedAt: '2023-11-09T11:54:00Z',
+  content: 'test content',
 };
