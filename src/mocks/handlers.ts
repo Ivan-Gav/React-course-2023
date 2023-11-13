@@ -13,9 +13,6 @@ export const handlers = [
   }),
   http.get(apiURl, ({ request }) => {
     const url = new URL(request.url);
-    if (url.pathname === 'invalid-path') {
-      return HttpResponse.json(errorResponse);
-    }
     const q = url.searchParams.get('q');
     if (q && q !== '') {
       return HttpResponse.json(mockContent1Card);
