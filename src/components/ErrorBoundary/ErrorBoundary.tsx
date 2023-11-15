@@ -16,10 +16,6 @@ class ErrorBoundary extends Component<EBProps, EBState> {
     return { hasError: true };
   }
 
-  // componentDidCatch(error: Error, info: ErrorInfo) {
-  //   console.log(error, info);
-  // }
-
   render() {
     if (this.state.hasError) {
       return this.props.fallback;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1699822719896" clover="3.2.0">
-  <project timestamp="1699822719896" name="All files">
-    <metrics statements="1058" coveredstatements="1007" conditionals="71" coveredconditionals="61" methods="35" coveredmethods="28" elements="1164" coveredelements="1096" complexity="0" loc="1058" ncloc="1058" packages="13" files="16" classes="16"/>
+<coverage generated="1699834767107" clover="3.2.0">
+  <project timestamp="1699834767107" name="All files">
+    <metrics statements="1055" coveredstatements="1022" conditionals="72" coveredconditionals="62" methods="36" coveredmethods="29" elements="1163" coveredelements="1113" complexity="0" loc="1055" ncloc="1055" packages="13" files="16" classes="16"/>
     <package name="src">
       <metrics statements="24" coveredstatements="24" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       <file name="App.tsx" path="C:\BAHbKA\IT\RSS\React-course-2023\src\App.tsx">
@@ -177,32 +177,32 @@
       </file>
     </package>
     <package name="src.components.Fallback">
-      <metrics statements="25" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <metrics statements="25" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
       <file name="Fallback.tsx" path="C:\BAHbKA\IT\RSS\React-course-2023\src\components\Fallback\Fallback.tsx">
-        <metrics statements="25" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="25" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
+        <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
         <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="16" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
       </file>
@@ -565,9 +565,9 @@
       </file>
     </package>
     <package name="src.mocks">
-      <metrics statements="501" coveredstatements="498" conditionals="5" coveredconditionals="4" methods="0" coveredmethods="0"/>
+      <metrics statements="498" coveredstatements="497" conditionals="4" coveredconditionals="4" methods="0" coveredmethods="0"/>
       <file name="handlers.ts" path="C:\BAHbKA\IT\RSS\React-course-2023\src\mocks\handlers.ts">
-        <metrics statements="25" coveredstatements="22" conditionals="5" coveredconditionals="4" methods="0" coveredmethods="0"/>
+        <metrics statements="22" coveredstatements="21" conditionals="4" coveredconditionals="4" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -583,16 +583,13 @@
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="15" count="23" type="stmt"/>
-        <line num="16" count="23" type="cond" truecount="0" falsecount="1"/>
-        <line num="17" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="19" count="23" type="stmt"/>
-        <line num="20" count="23" type="cond" truecount="2" falsecount="0"/>
-        <line num="21" count="13" type="stmt"/>
-        <line num="22" count="13" type="cond" truecount="1" falsecount="0"/>
-        <line num="23" count="10" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="16" count="23" type="stmt"/>
+        <line num="17" count="23" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="13" type="stmt"/>
+        <line num="19" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="20" count="10" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
       <file name="mockdata.ts" path="C:\BAHbKA\IT\RSS\React-course-2023\src\mocks\mockdata.ts">
         <metrics statements="472" coveredstatements="472" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
