@@ -1,18 +1,12 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-// import SearchContext from '../../contexts/SearchContext';
 import { RootState } from '../../store/store';
 import { setSearch } from '../../store/searchSlice';
-
-// type SearchProps = {
-//   onSubmit: (s: string) => void;
-// };
 
 function Search() {
   const initialQuery = useSelector((state: RootState) => state.search.value);
   const dispatch = useDispatch();
-  // const inputquery = useContext(SearchContext);
   const [hasError, setHasError] = useState(false);
   const [query, setQuery] = useState(initialQuery);
 

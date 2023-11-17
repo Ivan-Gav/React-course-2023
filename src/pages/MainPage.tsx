@@ -1,36 +1,20 @@
-import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import Content from '.././components/Content/Content';
 import Search from '.././components/Search/Search';
 import ListSettings from '.././components/ListSettings/ListSettings';
-// import SearchContext from '../contexts/SearchContext';
-// import { RootState } from '../store/store';
-
-const DEFAULT_PAGE_SIZE = 4;
+import { setPageSize } from '../store/pageSizeSlice';
 
 function MainPage() {
-  // const initialQuery = useSelector((state: RootState) => state.search);
-  // const dispatch = useDispatch();
-  // const [query, setQuery] = useState(initialQuery);
-  const [pageSize, setPageSize] = useState(
-    localStorage.getItem('pageSize') || DEFAULT_PAGE_SIZE.toString()
-  );
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [params, setParams] = useSearchParams();
 
-  // const handleSearch = (data: string) => {
-  //   setQuery(data);
-  //   navigate('/');
-  //   localStorage.setItem('searchQuery', data);
-  // };
-
-  const handleListSettings = (data: number) => {
-    setPageSize(data.toString());
+  const handleListSettings = (data: string) => {
+    dispatch(setPageSize(data));
     navigate('/');
-    localStorage.setItem('pageSize', data.toString());
     setParams((prev) => {
       prev.set('page', '1');
       return prev;
@@ -49,14 +33,10 @@ function MainPage() {
       <h1>News Portal</h1>
       <Search />
       <br />
-      <ListSettings
-        onPageSizeChange={handleListSettings}
-        pageSize={Number(pageSize)}
-      />
+      <ListSettings onPageSizeChange={handleListSettings} />
       <hr />
       <Content
         onPageChange={handlePage}
-        pageSize={Number(pageSize)}
         page={Number(params.get('page')) || 1}
       />
     </>

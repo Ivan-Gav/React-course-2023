@@ -11,7 +11,6 @@ import ContentContext from '../../contexts/ContentContext';
 import { RootState } from '../../store/store';
 
 type ContentProps = {
-  pageSize: number;
   page: number;
   onPageChange: (p: number) => void;
 };
@@ -20,8 +19,9 @@ const apiURl = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function Content(props: ContentProps) {
-  const { pageSize, page, onPageChange } = props;
+  const { page, onPageChange } = props;
   const query = useSelector((state: RootState) => state.search.value);
+  const pageSize = useSelector((state: RootState) => state.pageSize.value);
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<null | NewsApiResponse>(null);
   const [pages, setPages] = useState(1);
@@ -33,7 +33,7 @@ function Content(props: ContentProps) {
   const listProps: NewsApiRequest = {
     language: 'en',
     q: query,
-    pageSize: pageSize,
+    pageSize: Number(pageSize),
     page: page,
   };
 
@@ -72,7 +72,7 @@ function Content(props: ContentProps) {
         .then((data: NewsApiResponse) => {
           setContent(data);
           if (data.totalResults && pageSize) {
-            setPages(Math.ceil(data.totalResults / pageSize));
+            setPages(Math.ceil(data.totalResults / Number(pageSize)));
           } else {
             setHasError(true);
           }

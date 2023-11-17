@@ -1,10 +1,14 @@
+import { useSelector } from 'react-redux';
+
+import { RootState } from '../../store/store';
+
 type ListSettingsProps = {
-  pageSize: number;
-  onPageSizeChange: (p: number) => void;
+  onPageSizeChange: (p: string) => void;
 };
 
 function ListSettings(props: ListSettingsProps) {
-  const { pageSize, onPageSizeChange } = props;
+  const pageSize = useSelector((state: RootState) => state.pageSize.value);
+  const { onPageSizeChange } = props;
 
   return (
     <div>
@@ -13,7 +17,7 @@ function ListSettings(props: ListSettingsProps) {
         type="number"
         id="pagesize"
         defaultValue={pageSize}
-        onChange={(e) => onPageSizeChange(Number(e.target.value))}
+        onChange={(e) => onPageSizeChange(e.target.value)}
         min={1}
         max={30}
       />
