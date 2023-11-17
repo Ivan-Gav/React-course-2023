@@ -17,7 +17,7 @@ function NewsSnippet(props: NewsSnippetProps) {
 
   const onClick = () => {
     if (!isDetailsOpen()) {
-      navigate(`${details}`);
+      navigate(`${details}/${location.search}`);
     }
   };
 

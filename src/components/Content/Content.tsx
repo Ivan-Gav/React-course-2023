@@ -23,12 +23,22 @@ function Content(props: ContentProps) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isDetailsOpen = () => location.pathname !== '/';
+
+  const closeDetails = () => {
+    if (isDetailsOpen()) {
+      navigate(-1);
+    }
+  };
+
   const listProps: NewsApiRequest = {
     language: 'en',
     q: query,
     pageSize: Number(pageSize),
     page: page,
   };
+
+  const { data, isFetching } = useGetNewsQuery(listProps);
 
   const URL = (() => {
     let url = apiURl + '?';
@@ -41,16 +51,6 @@ function Content(props: ContentProps) {
     url = url.slice(0, -1);
     return url;
   })();
-
-  const { data, isFetching } = useGetNewsQuery(listProps);
-
-  const isDetailsOpen = () => location.pathname !== '/';
-
-  const closeDetails = () => {
-    if (isDetailsOpen()) {
-      navigate(-1);
-    }
-  };
 
   const pages = data?.totalResults
     ? Math.ceil(data.totalResults / Number(pageSize))
