@@ -1,31 +1,24 @@
-import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import NewsList from '../NewsList/NewsList';
 import Pagination from '../Pagination/Pagination';
-import NewsApiResponse from '../../interface/newsapiresponse';
 import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
-import ContentContext from '../../contexts/ContentContext';
 import { RootState } from '../../store/store';
+import { useGetNewsQuery } from '../../store/newsApiSlice';
+
+const apiURl = import.meta.env.VITE_API_URL;
 
 type ContentProps = {
   page: number;
   onPageChange: (p: number) => void;
 };
 
-const apiURl = import.meta.env.VITE_API_URL;
-const apiKey = import.meta.env.VITE_API_KEY;
-
 function Content(props: ContentProps) {
   const { page, onPageChange } = props;
   const query = useSelector((state: RootState) => state.search.value);
   const pageSize = useSelector((state: RootState) => state.pageSize.value);
-  const [loading, setLoading] = useState(false);
-  const [content, setContent] = useState<null | NewsApiResponse>(null);
-  const [pages, setPages] = useState(1);
-  const [hasError, setHasError] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,12 +30,7 @@ function Content(props: ContentProps) {
     page: page,
   };
 
-  const { q } = listProps;
-
   const URL = (() => {
-    if (!apiURl || !apiKey) {
-      throw new Error('Invalid request');
-    }
     let url = apiURl + '?';
     for (const key in listProps) {
       let value = listProps[key as keyof NewsApiRequest];
@@ -54,41 +42,9 @@ function Content(props: ContentProps) {
     return url;
   })();
 
+  const { data, isFetching } = useGetNewsQuery(listProps);
+
   const isDetailsOpen = () => location.pathname !== '/';
-
-  useEffect(() => {
-    const apiCall = async (): Promise<void> => {
-      setLoading(true);
-      fetch(URL, {
-        method: 'GET',
-        headers: {
-          'X-Api-Key': apiKey,
-        },
-      })
-        .then((res) => {
-          if (!res.ok) setHasError(true);
-          return res.json();
-        })
-        .then((data: NewsApiResponse) => {
-          setContent(data);
-          if (data.totalResults && pageSize) {
-            setPages(Math.ceil(data.totalResults / Number(pageSize)));
-          } else {
-            setHasError(true);
-          }
-          setLoading(false);
-        });
-    };
-
-    if (!isDetailsOpen()) apiCall();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [URL, pageSize]);
-
-  useEffect(() => {
-    if (hasError) {
-      throw new Error('Error by loading data from API');
-    }
-  }, [hasError]);
 
   const closeDetails = () => {
     if (isDetailsOpen()) {
@@ -96,10 +52,14 @@ function Content(props: ContentProps) {
     }
   };
 
+  const pages = data?.totalResults
+    ? Math.ceil(data.totalResults / Number(pageSize))
+    : 1;
+
   return (
     <div>
       <h2>News</h2>
-      {loading ? (
+      {isFetching ? (
         <Loader />
       ) : (
         <div>
@@ -110,15 +70,13 @@ function Content(props: ContentProps) {
                 closeDetails();
               }}
             >
-              {!!q && <h3>Search for: {q}</h3>}
-              {!!content?.totalResults && (
+              {!!query && <h3>Search for: {query}</h3>}
+              {!!data?.totalResults && (
                 <>
-                  <h3>Total results: {content.totalResults}</h3>
+                  <h3>Total results: {data.totalResults}</h3>
                   <h4>Request URL: {URL}</h4>
                   <hr />
-                  <ContentContext.Provider value={content}>
-                    <NewsList />
-                  </ContentContext.Provider>
+                  <NewsList {...data} />
                   {!isDetailsOpen() && (
                     <Pagination
                       page={page}
