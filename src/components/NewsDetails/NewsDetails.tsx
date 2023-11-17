@@ -1,62 +1,27 @@
-import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import NewsApiArticle from '../../interface/newsapiarticle';
-import NewsApiResponse from '../../interface/newsapiresponse';
+import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
-
-const apiURl = import.meta.env.VITE_API_URL;
-const apiKey = import.meta.env.VITE_API_KEY;
+import { useGetNewsQuery } from '../../store/newsApiSlice';
 
 function NewsDetails() {
-  const [loading, setLoading] = useState(false);
-  const [article, setArticle] = useState<null | NewsApiArticle>(null);
-  const [hasError, setHasError] = useState(false);
-
   const navigate = useNavigate();
   const param = useParams();
 
-  useEffect(() => {
-    const URL = `${apiURl}?language=en&q=${encodeURIComponent(
-      (param.article as string).trim()
-    )}`;
-    const apiCall = async (): Promise<void> => {
-      setLoading(true);
-      fetch(URL, {
-        method: 'GET',
-        headers: {
-          'X-Api-Key': apiKey,
-        },
-      })
-        .then((res) => {
-          if (!res.ok) setHasError(true);
-          return res.json();
-        })
-        .then((data: NewsApiResponse) => {
-          if (data.articles && data.articles[0]) {
-            setArticle(data.articles[0]);
-          } else {
-            setHasError(true);
-          }
-          setLoading(false);
-        })
-        .catch((err) =>
-          console.log(`Server error response caught: ${err.message}`)
-        );
-    };
+  const queryProps: NewsApiRequest = {
+    language: 'en',
+    q: param.article ? param.article.trim() : '',
+  };
 
-    apiCall();
-  }, [param.article]);
-
-  useEffect(() => {
-    if (hasError) {
-      throw new Error('Page Not Found');
-    }
-  }, [hasError]);
+  const { data, isFetching } = useGetNewsQuery(queryProps);
+  const article: null | NewsApiArticle = data?.articles?.length
+    ? data.articles[0]
+    : null;
 
   return (
     <div className="article">
-      {loading ? (
+      {isFetching ? (
         <Loader />
       ) : article ? (
         <div data-testid="news-details">
