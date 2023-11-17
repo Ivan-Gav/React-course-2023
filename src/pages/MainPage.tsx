@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+// import { useDispatch, useSelector } from 'react-redux';
+
 import Content from '.././components/Content/Content';
 import Search from '.././components/Search/Search';
 import ListSettings from '.././components/ListSettings/ListSettings';
-import SearchContext from '../contexts/SearchContext';
+// import SearchContext from '../contexts/SearchContext';
+// import { RootState } from '../store/store';
 
 const DEFAULT_PAGE_SIZE = 4;
 
 function MainPage() {
-  const [query, setQuery] = useState(localStorage.getItem('searchQuery') || '');
+  // const initialQuery = useSelector((state: RootState) => state.search);
+  // const dispatch = useDispatch();
+  // const [query, setQuery] = useState(initialQuery);
   const [pageSize, setPageSize] = useState(
     localStorage.getItem('pageSize') || DEFAULT_PAGE_SIZE.toString()
   );
@@ -16,11 +21,11 @@ function MainPage() {
 
   const [params, setParams] = useSearchParams();
 
-  const handleSearch = (data: string) => {
-    setQuery(data);
-    navigate('/');
-    localStorage.setItem('searchQuery', data);
-  };
+  // const handleSearch = (data: string) => {
+  //   setQuery(data);
+  //   navigate('/');
+  //   localStorage.setItem('searchQuery', data);
+  // };
 
   const handleListSettings = (data: number) => {
     setPageSize(data.toString());
@@ -41,22 +46,19 @@ function MainPage() {
 
   return (
     <>
-      <SearchContext.Provider value={query}>
-        <h1>News Portal</h1>
-        <Search onSubmit={handleSearch} />
-        <br />
-        <ListSettings
-          onPageSizeChange={handleListSettings}
-          pageSize={Number(pageSize)}
-        />
-        <hr />
-        <Content
-          query={query}
-          onPageChange={handlePage}
-          pageSize={Number(pageSize)}
-          page={Number(params.get('page')) || 1}
-        />
-      </SearchContext.Provider>
+      <h1>News Portal</h1>
+      <Search />
+      <br />
+      <ListSettings
+        onPageSizeChange={handleListSettings}
+        pageSize={Number(pageSize)}
+      />
+      <hr />
+      <Content
+        onPageChange={handlePage}
+        pageSize={Number(pageSize)}
+        page={Number(params.get('page')) || 1}
+      />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import NewsList from '../NewsList/NewsList';
 import Pagination from '../Pagination/Pagination';
@@ -7,9 +8,9 @@ import NewsApiResponse from '../../interface/newsapiresponse';
 import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
 import ContentContext from '../../contexts/ContentContext';
+import { RootState } from '../../store/store';
 
 type ContentProps = {
-  query?: string;
   pageSize: number;
   page: number;
   onPageChange: (p: number) => void;
@@ -19,7 +20,8 @@ const apiURl = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function Content(props: ContentProps) {
-  const { query, pageSize, page, onPageChange } = props;
+  const { pageSize, page, onPageChange } = props;
+  const query = useSelector((state: RootState) => state.search.value);
   const [loading, setLoading] = useState(false);
   const [content, setContent] = useState<null | NewsApiResponse>(null);
   const [pages, setPages] = useState(1);
