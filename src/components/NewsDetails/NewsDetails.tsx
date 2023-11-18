@@ -1,13 +1,21 @@
+import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import NewsApiArticle from '../../interface/newsapiarticle';
 import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
 import { useGetNewsQuery } from '../../store/newsApiSlice';
+import { RootState } from '../../store/store';
+import { setIsDetailsFetching } from '../../store/loadingFlagsSlice';
 
 function NewsDetails() {
   const navigate = useNavigate();
   const param = useParams();
+  const dispatch = useDispatch();
+  const isDetailsFetching = useSelector(
+    (state: RootState) => state.loadingFlags.isDetailsFetching
+  );
 
   const queryProps: NewsApiRequest = {
     language: 'en',
@@ -19,9 +27,13 @@ function NewsDetails() {
     ? data.articles[0]
     : null;
 
+  useEffect(() => {
+    dispatch(setIsDetailsFetching(isFetching));
+  }, [isFetching]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="article">
-      {isFetching ? (
+      {isDetailsFetching ? (
         <Loader />
       ) : article ? (
         <div data-testid="news-details">

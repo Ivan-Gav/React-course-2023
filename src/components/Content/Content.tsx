@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import NewsList from '../NewsList/NewsList';
 import Pagination from '../Pagination/Pagination';
@@ -7,6 +8,7 @@ import NewsApiRequest from '../../interface/newsapirequest';
 import Loader from '../Loader/Loader';
 import { RootState } from '../../store/store';
 import { useGetNewsQuery } from '../../store/newsApiSlice';
+import { setIsListFetching } from '../../store/loadingFlagsSlice';
 
 const apiURl = import.meta.env.VITE_API_URL;
 
@@ -19,9 +21,13 @@ function Content(props: ContentProps) {
   const { page, onPageChange } = props;
   const query = useSelector((state: RootState) => state.search.value);
   const pageSize = useSelector((state: RootState) => state.pageSize.value);
+  const isListFetching = useSelector(
+    (state: RootState) => state.loadingFlags.isListFetching
+  );
 
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const isDetailsOpen = () => location.pathname !== '/';
 
@@ -39,6 +45,10 @@ function Content(props: ContentProps) {
   };
 
   const { data, isFetching } = useGetNewsQuery(listProps);
+
+  useEffect(() => {
+    dispatch(setIsListFetching(isFetching));
+  }, [isFetching]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const URL = (() => {
     let url = apiURl + '?';
@@ -59,7 +69,7 @@ function Content(props: ContentProps) {
   return (
     <div>
       <h2>News</h2>
-      {isFetching ? (
+      {isListFetching ? (
         <Loader />
       ) : (
         <div>
