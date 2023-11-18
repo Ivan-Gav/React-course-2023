@@ -1,8 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import NewsDetails from '../components/NewsDetails/NewsDetails';
+import { store } from '../store/store';
 
 import { mockContent1Card } from '../mocks/mockdata';
 
@@ -14,14 +16,25 @@ describe('NewsDetails', () => {
 
   const WrappedNewsDetails = () => {
     return (
-      <MemoryRouter initialEntries={['/', `/${q}`]}>
-        <Routes>
-          <Route path="/:article" element={<NewsDetails />} />
-          <Route path="/" element={<div>previous page</div>} />
-        </Routes>
-      </MemoryRouter>
+      <Provider store={store}>
+        <MemoryRouter initialEntries={['/', `/${q}`]}>
+          <Routes>
+            <Route path="/:article" element={<NewsDetails />} />
+            <Route path="/" element={<div>previous page</div>} />
+          </Routes>
+        </MemoryRouter>
+      </Provider>
     );
   };
+
+  it('displays the loading indicator while fetching data', () => {
+    render(<WrappedNewsDetails />);
+    const loader = screen.getByRole('heading', { level: 1 });
+
+    expect(loader).toHaveTextContent(
+      /.*Loading\(no fancy CSS spinners here\).*/i
+    );
+  });
 
   describe('displays correctly the detailed card data', () => {
     it('displays the Card', async () => {
@@ -89,15 +102,6 @@ describe('NewsDetails', () => {
 
       expect(newsDetailsLink).toHaveAttribute('href', article.url);
     });
-  });
-
-  it('displays the loading indicator while fetching data', () => {
-    render(<WrappedNewsDetails />);
-    const loader = screen.getByRole('heading', { level: 1 });
-
-    expect(loader).toHaveTextContent(
-      /.*Loading\(no fancy CSS spinners here\).*/i
-    );
   });
 
   it('closes the component by clicking the close button', async () => {

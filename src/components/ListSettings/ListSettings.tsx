@@ -16,6 +16,7 @@ function ListSettings(props: ListSettingsProps) {
       <input
         type="number"
         id="pagesize"
+        data-testid="pagesize"
         defaultValue={pageSize}
         onChange={(e) => onPageSizeChange(e.target.value)}
         min={1}

@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
 import NewsList from '../components/NewsList/NewsList';
-import ContentContext from '../contexts/ContentContext';
 import {
   mockContent4Cards,
   mockContent10Cards,
@@ -14,9 +13,7 @@ import NewsApiResponse from '../interface/newsapiresponse';
 const MockNewsList = (props: NewsApiResponse) => {
   return (
     <BrowserRouter>
-      <ContentContext.Provider value={props}>
-        <NewsList />
-      </ContentContext.Provider>
+      <NewsList {...props} />
     </BrowserRouter>
   );
 };

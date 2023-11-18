@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import { MemoryRouter, Outlet, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import NewsSnippet from '../components/NewsSnippet/NewsSnippet';
 import NewsDetails from '../components/NewsDetails/NewsDetails';
 import { mockArticle } from '../mocks/mockdata';
 import NewsApiArticle from '../interface/newsapiarticle';
+import { store } from '../store/store';
 
 const MockNewsSnippet = (props: NewsApiArticle) => {
   return (
@@ -44,20 +46,22 @@ describe('NewsSnippet', () => {
   it('opens a detailed card component when clicked', async () => {
     const MockNewsSnippetWithNavigation = (props: NewsApiArticle) => {
       return (
-        <MemoryRouter initialEntries={['/']}>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <NewsSnippet newsItem={props} key="testkey" />
-                  <Outlet />
-                </>
-              }
-            />
-            <Route path=":article" element={<NewsDetails />} />
-          </Routes>
-        </MemoryRouter>
+        <Provider store={store}>
+          <MemoryRouter initialEntries={['/']}>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <NewsSnippet newsItem={props} key="testkey" />
+                    <Outlet />
+                  </>
+                }
+              />
+              <Route path=":article" element={<NewsDetails />} />
+            </Routes>
+          </MemoryRouter>
+        </Provider>
       );
     };
 
