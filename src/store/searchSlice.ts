@@ -5,7 +5,7 @@ interface SearchState {
 }
 
 const initialState: SearchState = {
-  value: localStorage.getItem('searchQuery') || '',
+  value: '',
 };
 
 const searchSlice = createSlice({
@@ -13,7 +13,6 @@ const searchSlice = createSlice({
   initialState: initialState,
   reducers: {
     setSearch: (state, action: PayloadAction<string>) => {
-      localStorage.setItem('searchQuery', action.payload);
       state.value = action.payload;
     },
   },
