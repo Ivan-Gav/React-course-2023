@@ -1,54 +1,49 @@
-import { useEffect } from 'react';
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 import NewsList from '../NewsList/NewsList';
 import Pagination from '../Pagination/Pagination';
 import NewsApiRequest from '../../interface/newsapirequest';
-import Loader from '../Loader/Loader';
+import NewsApiResponse from '../../interface/newsapiresponse';
 import { RootState } from '../../store/store';
-import { useGetNewsQuery } from '../../store/newsApiSlice';
-import { setIsListFetching } from '../../store/loadingFlagsSlice';
 
-const apiURl = import.meta.env.VITE_API_URL;
+const apiURl = process.env.API_URL;
 
-type ContentProps = {
-  page: number;
-  onPageChange: (p: number) => void;
-};
+function Content(props: NewsApiResponse) {
+  const router = useRouter();
+  // const dispatch = useDispatch();
 
-function Content(props: ContentProps) {
-  const { page, onPageChange } = props;
+  const page = router.query.page || 1;
   const query = useSelector((state: RootState) => state.search.value);
   const pageSize = useSelector((state: RootState) => state.pageSize.value);
-  const isListFetching = useSelector(
-    (state: RootState) => state.loadingFlags.isListFetching
-  );
 
-  const location = useLocation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
-  const isDetailsOpen = () => location.pathname !== '/';
+  const isDetailsOpen = () => router.pathname !== '/';
 
   const closeDetails = () => {
     if (isDetailsOpen()) {
-      navigate(-1);
+      router.back();
     }
+  };
+
+  const onPageChange = (destPage: number) => {
+    router.push(`/?page=${destPage}&pageSize=${pageSize}&q=${query}`);
   };
 
   const listProps: NewsApiRequest = {
     language: 'en',
     q: query,
     pageSize: Number(pageSize),
-    page: page,
+    page: Number(page),
   };
 
-  const { data, isFetching } = useGetNewsQuery(listProps);
+  // const { data, isFetching } = useGetNewsQuery(listProps);
 
-  useEffect(() => {
-    dispatch(setIsListFetching(isFetching));
-  }, [isFetching]); // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   dispatch(setIsListFetching(isFetching));
+  // }, [isFetching]);
 
   const URL = (() => {
     let url = apiURl + '?';
@@ -62,45 +57,41 @@ function Content(props: ContentProps) {
     return url;
   })();
 
-  const pages = data?.totalResults
-    ? Math.ceil(data.totalResults / Number(pageSize))
+  const pages = props.totalResults
+    ? Math.ceil(props.totalResults / Number(pageSize))
     : 1;
 
   return (
     <div>
       <h2>News</h2>
-      {isListFetching ? (
-        <Loader />
-      ) : (
-        <div>
-          <div className="content-wrapper">
-            <div
-              className="content-list-wrapper"
-              onClick={() => {
-                closeDetails();
-              }}
-            >
-              {!!query && <h3>Search for: {query}</h3>}
-              {!!data?.totalResults && (
-                <>
-                  <h3>Total results: {data.totalResults}</h3>
-                  <h4>Request URL: {URL}</h4>
-                  <hr />
-                  <NewsList {...data} />
-                  {!isDetailsOpen() && (
-                    <Pagination
-                      page={page}
-                      pages={pages}
-                      onPageChange={onPageChange}
-                    />
-                  )}
-                </>
-              )}
-            </div>
-            <Outlet />
+      <div>
+        <div className="content-wrapper">
+          <div
+            className="content-list-wrapper"
+            onClick={() => {
+              closeDetails();
+            }}
+          >
+            {!!query && <h3>Search for: {query}</h3>}
+            {!!props.totalResults && (
+              <>
+                <h3>Total results: {props.totalResults}</h3>
+                <h4>Request URL: {URL}</h4>
+                <hr />
+                <NewsList {...props} />
+                {!isDetailsOpen() && (
+                  <Pagination
+                    page={Number(page)}
+                    pages={pages}
+                    onPageChange={(n) => onPageChange(n)}
+                  />
+                )}
+              </>
+            )}
           </div>
+          {/* <Outlet /> */}
         </div>
-      )}
+      </div>
     </div>
   );
 }

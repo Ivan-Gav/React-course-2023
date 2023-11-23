@@ -1,4 +1,5 @@
-import { useLocation, useNavigate } from 'react-router-dom';
+// import { useLocation, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import NewsApiArticle from '../../interface/newsapiarticle';
 
@@ -10,14 +11,15 @@ type NewsSnippetProps = {
 function NewsSnippet(props: NewsSnippetProps) {
   const item = props.newsItem;
   const details = encodeURIComponent(item.title.trim());
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const location = useLocation();
+  // const navigate = useNavigate();
+  const router = useRouter();
 
-  const isDetailsOpen = () => location.pathname !== '/';
+  const isDetailsOpen = () => router.pathname !== '/';
 
   const onClick = () => {
     if (!isDetailsOpen()) {
-      navigate(`${details}/${location.search}`);
+      router.push(`${details}/${router.query}`);
     }
   };
 

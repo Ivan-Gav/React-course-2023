@@ -1,10 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { HYDRATE } from 'next-redux-wrapper';
 
 import NewsApiResponse from '../interface/newsapiresponse';
 import NewsApiRequest from '../interface/newsapirequest';
 
-const apiURl = import.meta.env.VITE_API_URL;
-const apiKey = import.meta.env.VITE_API_KEY;
+const apiURl = process.env.API_URL || '';
+const apiKey = process.env.API_KEY || '';
 
 const newsApi = createApi({
   reducerPath: 'content',
@@ -15,6 +16,11 @@ const newsApi = createApi({
       return headers;
     },
   }),
+  extractRehydrationInfo(action, { reducerPath }) {
+    if (action.type === HYDRATE) {
+      return action.payload[reducerPath];
+    }
+  },
   endpoints: (build) => ({
     getNews: build.query<NewsApiResponse, NewsApiRequest>({
       query: (queryParms: NewsApiRequest) => ({

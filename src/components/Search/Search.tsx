@@ -1,23 +1,29 @@
 import { FormEvent, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 import { RootState } from '../../store/store';
 import { setSearch } from '../../store/searchSlice';
 
 function Search() {
   const initialQuery = useSelector((state: RootState) => state.search.value);
+  const pageSize = useSelector((state: RootState) => state.pageSize.value);
   const dispatch = useDispatch();
   const [hasError, setHasError] = useState(false);
   const [query, setQuery] = useState(initialQuery);
 
+  const router = useRouter();
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     dispatch(setSearch(query));
+    router.push(`/?page=1&pageSize=${pageSize}&q=${query}`);
   };
 
   const clearSearch = () => {
     setQuery('');
     dispatch(setSearch(''));
+    router.push(`/?page=1&pageSize=${pageSize}&q=`);
   };
 
   useEffect(() => {
