@@ -4,7 +4,7 @@ import { HYDRATE } from 'next-redux-wrapper';
 import NewsApiResponse from '../interface/newsapiresponse';
 import NewsApiRequest from '../interface/newsapirequest';
 
-const apiURl = process.env.API_URL || '';
+const apiURl = process.env.NEXT_PUBLIC_API_URL || '';
 const apiKey = process.env.API_KEY || '';
 
 const newsApi = createApi({
