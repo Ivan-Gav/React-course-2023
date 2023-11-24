@@ -19,7 +19,7 @@ function NewsSnippet(props: NewsSnippetProps) {
 
   const onClick = () => {
     if (!isDetailsOpen()) {
-      router.push(`${details}/${router.query}`);
+      router.push(`${details}`);
     }
   };
 
