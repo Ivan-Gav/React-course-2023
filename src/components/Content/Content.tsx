@@ -3,24 +3,23 @@ import { useRouter } from 'next/router';
 
 import NewsList from '../NewsList/NewsList';
 import Pagination from '../Pagination/Pagination';
-import NewsApiRequest from '../../interface/newsapirequest';
-import NewsApiResponse from '../../interface/newsapiresponse';
 import { RootState } from '../../store/store';
+import NewsDetails from '../NewsDetails/NewsDetails';
+import {
+  NewsApiComposedResponse,
+  NewsApiRequest,
+} from '../../models/interfaces';
 
-const apiURl = process.env.API_URL;
+const apiURl = process.env.NEXT_PUBLIC_API_URL;
 
-function Content(props: NewsApiResponse) {
+function Content(props: NewsApiComposedResponse) {
   const router = useRouter();
-  // const dispatch = useDispatch();
 
   const page = router.query.page || 1;
   const query = useSelector((state: RootState) => state.search.value);
   const pageSize = useSelector((state: RootState) => state.pageSize.value);
 
-  // const location = useLocation();
-  // const navigate = useNavigate();
-
-  const isDetailsOpen = () => router.pathname !== '/';
+  const isDetailsOpen = () => !!router.query.article;
 
   const closeDetails = () => {
     if (isDetailsOpen()) {
@@ -38,12 +37,6 @@ function Content(props: NewsApiResponse) {
     pageSize: Number(pageSize),
     page: Number(page),
   };
-
-  // const { data, isFetching } = useGetNewsQuery(listProps);
-
-  // useEffect(() => {
-  //   dispatch(setIsListFetching(isFetching));
-  // }, [isFetching]);
 
   const URL = (() => {
     let url = apiURl + '?';
@@ -89,6 +82,9 @@ function Content(props: NewsApiResponse) {
               </>
             )}
           </div>
+          {!!router.query.article && !!props.openedArticle && (
+            <NewsDetails {...props.openedArticle} />
+          )}
           {/* <Outlet /> */}
         </div>
       </div>

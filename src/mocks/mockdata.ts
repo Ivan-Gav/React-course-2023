@@ -1,5 +1,5 @@
-import NewsApiArticle from '../interface/newsapiarticle';
-import NewsApiResponse from '../interface/newsapiresponse';
+import NewsApiArticle from '../models/newsapiarticle';
+import NewsApiResponse from '../models/newsapiresponse';
 
 export const mockResponse: NewsApiResponse = {
   status: 'ok',

@@ -6,31 +6,46 @@ import Content from '../src/components/Content/Content';
 import Search from '../src/components/Search/Search';
 import ListSettings from '../src/components/ListSettings/ListSettings';
 import { setPageSize } from '../src/store/pageSizeSlice';
-import NewsApiRequest from '../src/interface/newsapirequest';
 import newsApi from '../src/store/newsApiSlice';
 import { RootState, store } from '../src/store/store';
-import NewsApiResponse from '../src/interface/newsapiresponse';
+import { NewsApiComposedResponse } from '../src/models/interfaces';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const getServerSideProps = (async (context) => {
   const { query } = context;
 
-  const listProps: NewsApiRequest = {
+  const apiCallParams = {
     language: 'en',
     q: Array.isArray(query.q) ? query.q[0] : query.q || '',
     pageSize: query.pageSize ? Number(query.pageSize) : 4,
     page: query.page ? Number(query.page) : 1,
   };
 
-  const { data } = await store.dispatch(
-    newsApi.endpoints.getNews.initiate(listProps)
+  const apiCallParamsForArticle = {
+    language: 'en',
+    q: query.article as string,
+  };
+
+  let { data } = await store.dispatch(
+    newsApi.endpoints.getNews.initiate(apiCallParams)
   );
   if (!data) throw new Error('No data!');
+  if (query.article) {
+    const { data: articleData } = await store.dispatch(
+      newsApi.endpoints.getNews.initiate(apiCallParamsForArticle)
+    );
+    if (!articleData) throw new Error('No data!');
+    (data as NewsApiComposedResponse) = {
+      ...data,
+      openedArticle: articleData.articles ? articleData.articles[0] : null,
+    };
+  }
   return { props: { data } };
 }) satisfies GetServerSideProps<{
-  data: NewsApiResponse;
+  data: NewsApiComposedResponse;
 }>;
 
+// ------------------------------------------------------------------------
 function MainPage({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {

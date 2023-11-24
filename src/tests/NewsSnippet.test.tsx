@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import NewsSnippet from '../components/NewsSnippet/NewsSnippet';
 import NewsDetails from '../components/NewsDetails/NewsDetails';
 import { mockArticle } from '../mocks/mockdata';
-import NewsApiArticle from '../interface/newsapiarticle';
+import NewsApiArticle from '../models/newsapiarticle';
 import { store } from '../store/store';
 
 const MockNewsSnippet = (props: NewsApiArticle) => {

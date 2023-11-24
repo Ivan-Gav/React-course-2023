@@ -8,7 +8,7 @@ import {
   mockContent10Cards,
   mockContentNoCards,
 } from '../mocks/mockdata';
-import NewsApiResponse from '../interface/newsapiresponse';
+import NewsApiResponse from '../models/newsapiresponse';
 
 const MockNewsList = (props: NewsApiResponse) => {
   return (

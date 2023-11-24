@@ -1,6 +1,5 @@
-import NewsApiArticle from '../../interface/newsapiarticle';
+import { NewsApiArticle, NewsApiResponse } from '../../models/interfaces';
 import NewsSnippet from '../NewsSnippet/NewsSnippet';
-import NewsApiResponse from '../../interface/newsapiresponse';
 
 function NewsList(props: NewsApiResponse) {
   const renderList = () => {
