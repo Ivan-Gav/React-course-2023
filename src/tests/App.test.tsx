@@ -2,17 +2,18 @@ import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 
-import App from '../App';
 import { store } from '../store/store';
+import MainPage from '../../pages/index';
+import { mockContent4Cards } from '../mocks/mockdata';
 
-describe('App', () => {
-  it('renders h1: News Portal ', () => {
+describe('MainPage', () => {
+  it('renders h1: News Portal ', async () => {
     render(
       <Provider store={store}>
-        <App />
+        <MainPage data={mockContent4Cards} />
       </Provider>
     );
-    const mainHeader = screen.getByText('News Portal');
+    const mainHeader = await screen.findByText('News Portal');
     expect(mainHeader).toBeVisible();
   });
 });

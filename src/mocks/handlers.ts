@@ -5,7 +5,7 @@ import {
   errorResponse,
 } from './mockdata';
 
-const apiURl = import.meta.env.VITE_API_URL;
+const apiURl = 'https://newsapi.org/v2/top-headlines';
 
 export const handlers = [
   http.get(`${apiURl}/invalid-path`, () => {

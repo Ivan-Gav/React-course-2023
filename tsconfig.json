@@ -32,7 +32,8 @@
     "pages",
     ".eslintrc.cjs",
     "./dist/types/**/*.ts",
-    "./next-env.d.ts"
+    "./next-env.d.ts",
+    "vite.config.ts"
   ],
   "exclude": ["./node_modules"]
 }

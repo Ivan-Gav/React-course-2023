@@ -1,5 +1,8 @@
-import NewsApiArticle from '../models/newsapiarticle';
-import NewsApiResponse from '../models/newsapiresponse';
+import {
+  NewsApiArticle,
+  NewsApiResponse,
+  NewsApiComposedResponse,
+} from '../models/interfaces';
 
 export const mockResponse: NewsApiResponse = {
   status: 'ok',
@@ -469,4 +472,94 @@ export const errorResponse: NewsApiResponse = {
   status: 'error',
   code: 404,
   message: 'Houston, we have a problem',
+};
+
+export const mockContent4CardsWithDetailsOpen: NewsApiComposedResponse = {
+  status: 'ok',
+  totalResults: 79,
+  articles: [
+    {
+      source: {
+        id: 'mock content 1 card',
+        name: 'mockContent1Card',
+      },
+      author: 'Ivan',
+      title: 'Testing detailed card component',
+      description:
+        'Mock server response has been successfully recieved in order to check the Detailed Card (NewsDetails) component',
+      url: 'https://test.com',
+      urlToImage:
+        'https://c.ndtvimg.com/2023-10/48uafj1_devon-conway-afp_625x300_18_October_23.jpg?im=FitAndFill,algorithm=dnn,width=1200,height=675',
+      publishedAt: '2023-11-12T12:21:55Z',
+      content:
+        'Mock server response has been successfully recieved in order to check the Detailed Card (NewsDetails) component',
+    },
+    {
+      source: {
+        id: null,
+        name: 'India Today',
+      },
+      author: 'Ankita Garg',
+      title:
+        'Samsung unveils AI features on Galaxy phones that can translate your phone calls - India Today',
+      description:
+        'Samsung has introduced a new Galaxy AI feature, which promises to offer several AI-based features to Samsung phone users for a better smartphone experience. It confirmed that people will soon see the AI Live Translate Call tool.',
+      url: 'https://www.indiatoday.in/technology/news/story/samsung-unveils-galaxy-ai-feature-that-can-translate-your-phone-calls-2460981-2023-11-09',
+      urlToImage:
+        'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202311/samsung-galaxy-s22-ultrajpg-011600-16x9.jpg?VersionId=4dTkPfBrdjmudCwopCH4rHvYFAIVpwQm',
+      publishedAt: '2023-11-09T12:20:48Z',
+      content:
+        'Samsung has taken a leap into the future of smartphone technology with the introduction of "Galaxy AI." This new feature, outlined in a recent blog post, promises to offer several AI-based features t… [+2165 chars]',
+    },
+    {
+      source: {
+        id: null,
+        name: 'Business Insider India',
+      },
+      author: 'Ashmita Gupta',
+      title:
+        'Atomic oxygen found sandwiched between layers of sulphurous clouds On Venus - Business Insider India',
+      description:
+        'When it comes to looking for signs of life and dreaming of building an extraterrestrial human base, Venus has often played second fiddle to Mars. And our neighbour',
+      url: 'https://www.businessinsider.in/science/news/atomic-oxygen-found-sandwiched-between-layers-of-sulphurous-clouds-on-venus/articleshow/105097735.cms',
+      urlToImage:
+        'https://www.businessinsider.in/photo/105097735/atomic-oxygen-found-sandwiched-between-layers-of-sulphurous-clouds-on-venus.jpg',
+      publishedAt: '2023-11-09T12:09:00Z',
+      content:
+        'When it comes to looking for signs of life and dreaming of building an extraterrestrial human base, Venus\r\n has often played second fiddle to Mars. And our neighbour Venus, with its notorious 96.5% c… [+2584 chars]',
+    },
+    {
+      source: {
+        id: null,
+        name: 'Livemint',
+      },
+      author: 'Affiliate Desk',
+      title:
+        'Sale on Flipkart: Offering up to 52% off on top AC brands this festive month | Mint - Mint',
+      description:
+        "Explore the hottest deals on top AC brands during the sale on Flipkart this festive season. Don't miss out on massive savings as you prepare to beat the heat in the upcoming summer season! Shop now and stay cool while saving big.",
+      url: 'https://www.livemint.com/technology/gadgets/sale-on-flipkart-offering-up-to-52-off-on-top-ac-brands-this-festive-month-11699527660596.html',
+      urlToImage:
+        'https://www.livemint.com/lm-img/img/2023/11/09/1600x900/ac_brands_1699528312670_1699528327718.jpg',
+      publishedAt: '2023-11-09T11:59:31Z',
+      content:
+        "Get ready as Flipkart's Diwali sale 2023 is here, and it's your chance to seize the best offers on ACs from the Top AC brands. The scorching sun won't stand a chance against these incredible AC festi… [+18901 chars]",
+    },
+  ],
+  openedArticle: {
+    source: {
+      id: 'mock content 1 card',
+      name: 'mockContent1Card',
+    },
+    author: 'Ivan',
+    title: 'Testing detailed card component',
+    description:
+      'Mock server response has been successfully recieved in order to check the Detailed Card (NewsDetails) component',
+    url: 'https://test.com',
+    urlToImage:
+      'https://c.ndtvimg.com/2023-10/48uafj1_devon-conway-afp_625x300_18_October_23.jpg?im=FitAndFill,algorithm=dnn,width=1200,height=675',
+    publishedAt: '2023-11-12T12:21:55Z',
+    content:
+      'Mock server response has been successfully recieved in order to check the Detailed Card (NewsDetails) component',
+  },
 };

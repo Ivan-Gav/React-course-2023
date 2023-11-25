@@ -82,9 +82,7 @@ function Content(props: NewsApiComposedResponse) {
               </>
             )}
           </div>
-          {!!router.query.article && !!props.openedArticle && (
-            <NewsDetails {...props.openedArticle} />
-          )}
+          {!!props.openedArticle && <NewsDetails {...props.openedArticle} />}
           {/* <Outlet /> */}
         </div>
       </div>

@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { HYDRATE } from 'next-redux-wrapper';
 
-import NewsApiResponse from '../models/newsapiresponse';
-import NewsApiRequest from '../models/newsapirequest';
+import { NewsApiResponse, NewsApiRequest } from '../models/interfaces';
 
 const apiURl = process.env.NEXT_PUBLIC_API_URL || '';
 const apiKey = process.env.API_KEY || '';
