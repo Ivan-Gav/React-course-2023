@@ -1,21 +1,30 @@
-import { useNavigate } from 'react-router';
-import { useRouteError } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
-function Fallback() {
-  const navigate = useNavigate();
-  const error = useRouteError();
+type FallbackProps = {
+  errorMessage?: string;
+};
+
+function Fallback(props: FallbackProps) {
+  const { errorMessage } = props;
+  const router = useRouter();
 
   return (
     <div className="fallback">
-      {error instanceof Error ? (
+      {errorMessage ? (
         <>
-          <h2>Following Error has occured:</h2>
-          <h1>{error.message}</h1>
+          <h2>Following error has occured:</h2>
+          <h1>{errorMessage}</h1>
         </>
       ) : (
         <h1>Something went wrong...</h1>
       )}
-      <button type="button" onClick={() => navigate('/')}>
+      <button
+        type="button"
+        onClick={() => {
+          router.push('/');
+          router.reload();
+        }}
+      >
         Go to Main page
       </button>
     </div>
