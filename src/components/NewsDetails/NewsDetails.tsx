@@ -3,6 +3,14 @@ import { NewsApiArticle } from '../../models/interfaces';
 
 export default function NewsDetails(article: NewsApiArticle) {
   const router = useRouter();
+  const { pathname, query } = router;
+
+  const closeMe = () => {
+    if (query.article) {
+      delete router.query.article;
+      router.push({ pathname, query });
+    }
+  };
 
   return (
     <div className="article">
@@ -20,14 +28,14 @@ export default function NewsDetails(article: NewsApiArticle) {
           {article.description && <p>{article.description}</p>}
           <a href={article.url}>Read full article on {article.source.name}</a>
           <br />
-          <button className="close-button" onClick={() => router.back()}>
+          <button className="close-button" onClick={closeMe}>
             Close
           </button>
         </div>
       ) : (
         <div>
           <h4>Article not found</h4>
-          <button className="close-button" onClick={() => router.back()}>
+          <button className="close-button" onClick={closeMe}>
             Close
           </button>
         </div>

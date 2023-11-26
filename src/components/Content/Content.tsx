@@ -14,26 +14,28 @@ const apiURl = process.env.NEXT_PUBLIC_API_URL;
 
 function Content(props: NewsApiComposedResponse) {
   const router = useRouter();
+  const { pathname, query } = router;
 
-  const page = router.query.page || 1;
-  const query = useSelector((state: RootState) => state.search.value);
+  const page = query.page || 1;
+  const searchQuery = useSelector((state: RootState) => state.search.value);
   const pageSize = useSelector((state: RootState) => state.pageSize.value);
 
-  const isDetailsOpen = () => !!router.query.article;
+  const isDetailsOpen = () => !!query.article;
 
   const closeDetails = () => {
     if (isDetailsOpen()) {
-      router.back();
+      delete router.query.article;
+      router.push({ pathname, query });
     }
   };
 
   const onPageChange = (destPage: number) => {
-    router.push(`/?page=${destPage}&pageSize=${pageSize}&q=${query}`);
+    router.push(`/?page=${destPage}&pageSize=${pageSize}&q=${searchQuery}`);
   };
 
   const listProps: NewsApiRequest = {
     language: 'en',
-    q: query,
+    q: searchQuery,
     pageSize: Number(pageSize),
     page: Number(page),
   };
@@ -65,7 +67,7 @@ function Content(props: NewsApiComposedResponse) {
               closeDetails();
             }}
           >
-            {!!query && <h3>Search for: {query}</h3>}
+            {!!searchQuery && <h3>Search for: {searchQuery}</h3>}
             <h3>Total results: {props.totalResults}</h3>
             <h4>Request URL: {URL}</h4>
             <hr />

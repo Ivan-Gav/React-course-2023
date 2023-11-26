@@ -43,10 +43,10 @@ export const getServerSideProps = (async (context) => {
     const { data: articleData } = await store.dispatch(
       newsApi.endpoints.getNews.initiate(apiCallParamsForArticle)
     );
-    if (!articleData) throw new Error('No data!');
     (data as NewsApiComposedResponse) = {
       ...data,
-      openedArticle: articleData.articles ? articleData.articles[0] : null,
+      openedArticle:
+        articleData && articleData.articles ? articleData.articles[0] : null,
     };
   }
   return { props: { data } };
