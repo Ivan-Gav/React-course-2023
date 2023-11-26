@@ -13,7 +13,7 @@ function NewsList(props: NewsApiResponse) {
         );
       });
     }
-    return <div>Nothing found</div>;
+    return <h4>Nothing found</h4>;
   };
 
   return <>{renderList()}</>;

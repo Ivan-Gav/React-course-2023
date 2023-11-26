@@ -8,11 +8,20 @@ import ListSettings from '../src/components/ListSettings/ListSettings';
 import { setPageSize } from '../src/store/pageSizeSlice';
 import newsApi from '../src/store/newsApiSlice';
 import { RootState, store } from '../src/store/store';
-import { NewsApiComposedResponse } from '../src/models/interfaces';
+import {
+  NewsApiComposedResponse,
+  NewsApiResponse,
+} from '../src/models/interfaces';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const getServerSideProps = (async (context) => {
   const { query } = context;
+
+  const emptyData: NewsApiResponse = {
+    status: 'ok',
+    totalResults: 1,
+    articles: [],
+  };
 
   const apiCallParams = {
     language: 'en',
@@ -29,7 +38,7 @@ export const getServerSideProps = (async (context) => {
   let { data } = await store.dispatch(
     newsApi.endpoints.getNews.initiate(apiCallParams)
   );
-  if (!data) throw new Error('No data!');
+  if (!data) data = emptyData;
   if (query.article) {
     const { data: articleData } = await store.dispatch(
       newsApi.endpoints.getNews.initiate(apiCallParamsForArticle)
@@ -45,7 +54,6 @@ export const getServerSideProps = (async (context) => {
   data: NewsApiComposedResponse;
 }>;
 
-// ------------------------------------------------------------------------
 function MainPage({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {

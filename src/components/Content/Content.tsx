@@ -66,24 +66,19 @@ function Content(props: NewsApiComposedResponse) {
             }}
           >
             {!!query && <h3>Search for: {query}</h3>}
-            {!!props.totalResults && (
-              <>
-                <h3>Total results: {props.totalResults}</h3>
-                <h4>Request URL: {URL}</h4>
-                <hr />
-                <NewsList {...props} />
-                {!isDetailsOpen() && (
-                  <Pagination
-                    page={Number(page)}
-                    pages={pages}
-                    onPageChange={(n) => onPageChange(n)}
-                  />
-                )}
-              </>
+            <h3>Total results: {props.totalResults}</h3>
+            <h4>Request URL: {URL}</h4>
+            <hr />
+            <NewsList {...props} />
+            {!isDetailsOpen() && (
+              <Pagination
+                page={Number(page)}
+                pages={pages}
+                onPageChange={(n) => onPageChange(n)}
+              />
             )}
           </div>
           {!!props.openedArticle && <NewsDetails {...props.openedArticle} />}
-          {/* <Outlet /> */}
         </div>
       </div>
     </div>
