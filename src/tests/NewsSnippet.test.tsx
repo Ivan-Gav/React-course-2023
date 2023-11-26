@@ -1,22 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
-// import { MemoryRouter, Outlet, Route, Routes } from 'react-router-dom';
-// import { Provider } from 'react-redux';
-// import { useRouter } from 'next/router';
+import { render, screen, fireEvent } from '@testing-library/react';
+import mockRouter from 'next-router-mock';
 
 import NewsSnippet from '../components/NewsSnippet/NewsSnippet';
-// import NewsDetails from '../components/NewsDetails/NewsDetails';
 import { mockArticle } from '../mocks/mockdata';
-// import { NewsApiArticle } from '../models/interfaces';
-// import { store } from '../store/store';
-
-// const MockNewsSnippet = (props: NewsApiArticle) => {
-//   return (
-//     <MemoryRouter initialEntries={['/']}>
-//       <NewsSnippet newsItem={props} key="testkey" />
-//     </MemoryRouter>
-//   );
-// };
 
 describe('NewsSnippet', () => {
   describe('renders the relevant card data', () => {
@@ -44,14 +31,16 @@ describe('NewsSnippet', () => {
     });
   });
 
-  // it('opens a detailed card component when clicked', () => {
-  //   render(<NewsSnippet newsItem={mockArticle} key="testkey" />);
-  //   const snippet = screen.getByTestId('news-snippet');
+  it('opens a detailed card component when clicked', () => {
+    mockRouter.push('/');
+    render(<NewsSnippet newsItem={mockArticle} key="testkey" />);
+    const snippet = screen.getByTestId('news-snippet');
 
-  //   fireEvent.click(snippet);
-  //   const path = window.location.search;
-  //   const destinationPath = encodeURIComponent(mockArticle.title.trim());
+    fireEvent.click(snippet);
 
-  //   expect(path).toBe(`?article=${destinationPath}`);
-  // });
+    const path = mockRouter.asPath;
+    const destinationPath = encodeURIComponent(mockArticle.title.trim());
+
+    expect(path).toBe(`/?article=${destinationPath}`);
+  });
 });

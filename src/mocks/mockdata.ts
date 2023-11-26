@@ -460,7 +460,7 @@ export const mockArticle: NewsApiArticle = {
     name: 'Reuters',
   },
   author: 'test author',
-  title: 'Test title',
+  title: 'Test-title',
   description: 'test description',
   url: 'https://www.test.com/',
   urlToImage: 'https://www.test.com/testimg.jpg',

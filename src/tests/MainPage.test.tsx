@@ -1,10 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-// import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
-import { useRouter } from 'next/router';
 import { Provider } from 'react-redux';
-import { mockContent4Cards } from '../mocks/mockdata';
+import mockRouter from 'next-router-mock';
 
+import { mockContent4Cards } from '../mocks/mockdata';
 import MainPage from '../../pages/index';
 import { store } from '../store/store';
 
@@ -33,55 +32,71 @@ describe('MainPage', () => {
   });
 
   describe('when Pagination is used', () => {
-    const MockMainPageWithQuery = () => {
-      // const location = useLocation();
-      const router = useRouter();
-      return (
-        <Provider store={store}>
-          <MainPage data={mockContent4Cards} />
-          <div data-testid="destination">{router.query.page}</div>
-        </Provider>
-      );
-    };
-
     it('updates URL query parameter when Next page button is clicked', async () => {
-      render(<MockMainPageWithQuery />);
+      mockRouter.push('/');
+      render(<MockMainPage />);
       const next = await screen.findByRole('button', { name: 'Next' });
 
       fireEvent.click(next);
 
-      const destinationElement = await screen.findByTestId('destination');
-      expect(destinationElement).toHaveTextContent('2');
+      const path = mockRouter.asPath;
+      expect(path).toMatch(/page=2/);
     });
 
     it('updates URL query parameter when Last page button is clicked', async () => {
-      render(<MockMainPageWithQuery />);
+      mockRouter.push('/');
+      render(<MockMainPage />);
       const last = await screen.findByRole('button', { name: 'Last' });
 
       fireEvent.click(last);
 
-      const destinationElement = await screen.findByTestId('destination');
-      expect(destinationElement).toHaveTextContent('20');
+      const path = mockRouter.asPath;
+      expect(path).toMatch(/page=20/);
     });
 
     it('updates URL query parameter when Prev page button is clicked', async () => {
-      render(<MockMainPageWithQuery />);
+      mockRouter.push('/?page=7');
+      render(<MockMainPage />);
       const prev = await screen.findByRole('button', { name: 'Prev' });
 
       fireEvent.click(prev);
 
-      const destinationElement = await screen.findByTestId('destination');
-      expect(destinationElement).toHaveTextContent('19');
+      const path = mockRouter.asPath;
+      expect(path).toMatch(/page=6/);
     });
 
     it('updates URL query parameter when First page button is clicked', async () => {
-      render(<MockMainPageWithQuery />);
+      mockRouter.push('/?page=7');
+      render(<MockMainPage />);
       const first = await screen.findByRole('button', { name: 'First' });
 
       fireEvent.click(first);
 
-      const destinationElement = await screen.findByTestId('destination');
-      expect(destinationElement).toHaveTextContent('1');
+      const path = mockRouter.asPath;
+      expect(path).toMatch(/page=1/);
+    });
+  });
+
+  describe('when Page Size settings are changed', () => {
+    it('updates URL query parameter when News per Page setting is changed', () => {
+      mockRouter.push('/');
+      render(<MockMainPage />);
+      const next = screen.getByTestId('pagesize');
+
+      fireEvent.change(next, { target: { value: '6' } });
+      let path = mockRouter.asPath;
+
+      expect(path).toMatch(/pageSize=6/);
+
+      fireEvent.change(next, { target: { value: '2' } });
+      path = mockRouter.asPath;
+
+      expect(path).toMatch(/pageSize=2/);
+
+      fireEvent.change(next, { target: { value: '8' } });
+      path = mockRouter.asPath;
+
+      expect(path).toMatch(/pageSize=8/);
     });
   });
 });
