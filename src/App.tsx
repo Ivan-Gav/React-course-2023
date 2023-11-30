@@ -1,5 +1,11 @@
-function App() {
-  return <div>Test!</div>;
-}
+import { Outlet } from 'react-router-dom';
+import NavBar from './components/NavBar';
 
-export default App;
+export default function App() {
+  return (
+    <>
+      <NavBar />
+      <Outlet />
+    </>
+  );
+}
