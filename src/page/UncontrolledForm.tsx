@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import emptyProfile from '../assets/images/empty-profile.png';
 import * as yup from 'yup';
+
+import emptyProfile from '../assets/images/empty-profile.png';
+import { COUNTRIES } from '../constants/countries';
 
 type Gender = 'notspecified' | 'female' | 'male';
 
@@ -28,16 +30,16 @@ interface IFormErrors {
   tc?: string;
 }
 
-const COUNTRIES = [
-  'Poland',
-  'Germany',
-  'France',
-  'Ukraine',
-  'Belarus',
-  'Russia',
-  'UK',
-  'USA',
-];
+// const COUNTRIES = [
+//   'Poland',
+//   'Germany',
+//   'France',
+//   'Ukraine',
+//   'Belarus',
+//   'Russia',
+//   'UK',
+//   'USA',
+// ];
 
 // validation
 
@@ -202,8 +204,14 @@ export default function UncontrolledForm() {
         <label htmlFor="country" className="label">
           Country
         </label>
-        <input id="country" name="country" />
+        <input id="country" list="countries" name="country" />
         {errors.country && <span className="error">{errors.country}</span>}
+
+        <datalist id="countries">
+          {COUNTRIES.map((country, i) => (
+            <option key={i} value={country} />
+          ))}
+        </datalist>
       </fieldset>
 
       <fieldset>
