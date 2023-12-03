@@ -16,6 +16,7 @@ fieldset {
 .label {
   display: block;
   min-width: 130px;
+  margin-bottom: 4px;
 }
 
 .nav {
@@ -30,6 +31,27 @@ fieldset {
   .active {
     font-weight: bold;
   }
+}
+
+.profile-pic-input {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+progress.level-1 {
+  accent-color: red;
+}
+
+progress.level-2 {
+  accent-color: orange;
+}
+
+progress.level-3 {
+  accent-color: yellow;
+}
+
+progress.level-4 {
+  accent-color: green;
 }
 
 .mainpage {

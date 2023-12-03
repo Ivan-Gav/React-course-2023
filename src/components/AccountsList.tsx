@@ -9,7 +9,6 @@ export default function AccountsList() {
 
   return (
     <>
-      <h2 className="mainpage">Main page content</h2>
       {!!accounts.length && (
         <div className="card-list">
           {accounts.toReversed().map((account) => (

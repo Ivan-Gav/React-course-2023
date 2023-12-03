@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 
-import emptyProfile from '../assets/images/empty-profile.png';
 import { IFormErrors } from '../models/models';
 import { schema } from '../validation/schema';
 import useAccounts from '../state/useAccounts';
@@ -42,22 +41,14 @@ export default function UncontrolledForm() {
   return (
     <form className="form" method="post" onSubmit={handleSubmit}>
       <fieldset>
-        <label htmlFor="image">
-          <input
-            className="profile-pic-input"
-            type="file"
-            id="image"
-            name="image"
-            hidden
-          />
-          <img
-            className="profile-pic"
-            src={emptyProfile}
-            alt="profile pic"
-            width={150}
-            height={200}
-          />
-        </label>
+        <label htmlFor="image">Image</label>
+        <br />
+        <input
+          className="profile-pic-input"
+          type="file"
+          id="image"
+          name="image"
+        />
         {errors.image && <span className="error">{errors.image}</span>}
       </fieldset>
 

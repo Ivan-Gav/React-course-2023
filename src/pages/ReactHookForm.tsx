@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import emptyProfile from '../assets/images/empty-profile.png';
 import { IFormInputs } from '../models/models';
 import { schema } from '../validation/schema';
 import useAccounts from '../state/useAccounts';
 import { RootState } from '../state/store';
+import StrengthIndicator from '../components/StrengthIndicator';
 
 export default function ReactHookForm() {
   const {
@@ -23,6 +23,7 @@ export default function ReactHookForm() {
   const { saveAccount } = useAccounts();
   const countries = useSelector((state: RootState) => state.countries);
 
+  const pass = watch('password');
   const showpass = watch('showpass');
   const showconfirm = watch('showconfirm');
 
@@ -35,22 +36,14 @@ export default function ReactHookForm() {
   return (
     <form className="form" method="post" onSubmit={handleSubmit(onSubmit)}>
       <fieldset>
-        <label htmlFor="image">
-          <input
-            className="profile-pic-input"
-            type="file"
-            id="image"
-            hidden
-            {...register('image')}
-          />
-          <img
-            className="profile-pic"
-            src={emptyProfile}
-            alt="profile pic"
-            width={150}
-            height={200}
-          />
-        </label>
+        <label htmlFor="image">Image</label>
+        <br />
+        <input
+          className="profile-pic-input"
+          type="file"
+          id="image"
+          {...register('image')}
+        />
         {errors.image && <span className="error">{errors.image.message}</span>}
       </fieldset>
 
@@ -135,6 +128,7 @@ export default function ReactHookForm() {
         {errors.password && (
           <span className="error">{errors.password.message}</span>
         )}
+        <StrengthIndicator pass={pass} />
       </fieldset>
 
       <fieldset>
