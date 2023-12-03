@@ -65,9 +65,14 @@ fieldset {
   justify-content: flex-start;
   align-items: center;
   background-color: aliceblue;
+  transition: background-color 3s;
   border-radius: 10px;
   border: none;
   padding: 20px;
+}
+
+.card.new {
+  background-color: coral;
 }
 
 .card-text {

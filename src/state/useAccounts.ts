@@ -1,4 +1,6 @@
 import { useDispatch } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
+
 import { IFormData, IFormInputs } from '../models/models';
 import { add } from './accountSlice';
 
@@ -24,6 +26,7 @@ export default function useAccounts() {
     const pic = await toBase64(account.image);
     const { name, age, email, gender, country, password } = account;
     const data: IFormData = {
+      id: uuidv4(),
       image: typeof pic === 'string' ? pic : '',
       name,
       age,
@@ -33,6 +36,7 @@ export default function useAccounts() {
       password,
     };
     dispatch(add(data));
+    return data;
   };
 
   return { saveAccount };

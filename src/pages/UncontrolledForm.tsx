@@ -20,8 +20,8 @@ export default function UncontrolledForm() {
     try {
       const validData = await schema.validate(formJson, { abortEarly: false });
       setErrors({});
-      await saveAccount(validData);
-      navigate('/');
+      const data = await saveAccount(validData);
+      navigate('/', { state: { id: data.id } });
     } catch (error) {
       if (error instanceof yup.ValidationError) {
         let errs: IFormErrors = {};

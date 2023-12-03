@@ -29,4 +29,4 @@ export interface IFormInputs {
 export type IFormData = Omit<
   IFormInputs,
   'image' | 'confirmpassword' | 'tc' | 'showpass' | 'showconfirm'
-> & { image: string };
+> & { id: string; image: string };

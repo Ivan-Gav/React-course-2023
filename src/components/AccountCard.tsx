@@ -1,10 +1,24 @@
+import { useEffect, useState } from 'react';
 import { IFormData } from '../models/models';
 
-export default function AccountCard(account: IFormData) {
-  const { name, age, gender, country, image, email } = account;
+type AccountCardProps = {
+  account: IFormData;
+  new: boolean;
+};
+
+export default function AccountCard(props: AccountCardProps) {
+  const { name, age, gender, country, image, email } = props.account;
+  const [isNew, setIsNew] = useState(props.new);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsNew(false);
+      clearTimeout(timerId);
+    }, 2000);
+  }, []);
 
   return (
-    <div className="card">
+    <div className={isNew ? 'card new' : 'card'}>
       <img src={image} alt="no image" height="200px" />
       <div className="card-text">
         <h3>{name}</h3>
