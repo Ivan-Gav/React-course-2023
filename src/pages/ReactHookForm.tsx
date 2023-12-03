@@ -1,12 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import emptyProfile from '../assets/images/empty-profile.png';
-import { COUNTRIES } from '../constants/countries';
 import { IFormInputs } from '../models/models';
 import { schema } from '../validation/schema';
 import useAccounts from '../state/useAccounts';
+import { RootState } from '../state/store';
 
 export default function ReactHookForm() {
   const {
@@ -20,6 +21,7 @@ export default function ReactHookForm() {
   });
   const navigate = useNavigate();
   const { saveAccount } = useAccounts();
+  const countries = useSelector((state: RootState) => state.countries);
 
   const showpass = watch('showpass');
   const showconfirm = watch('showconfirm');
@@ -114,7 +116,7 @@ export default function ReactHookForm() {
         )}
 
         <datalist id="countries">
-          {COUNTRIES.map((country, i) => (
+          {countries.map((country, i) => (
             <option key={`rhf${i}`} value={country} />
           ))}
         </datalist>

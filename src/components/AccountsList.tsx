@@ -14,7 +14,7 @@ export default function AccountsList() {
         <div className="card-list">
           {accounts.toReversed().map((account) => (
             <AccountCard
-              new={location.state.id === account.id}
+              new={location.state ? location.state.id === account.id : false}
               key={account.id}
               account={account}
             />

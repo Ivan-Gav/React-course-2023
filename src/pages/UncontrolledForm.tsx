@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import * as yup from 'yup';
 
 import emptyProfile from '../assets/images/empty-profile.png';
-import { COUNTRIES } from '../constants/countries';
 import { IFormErrors } from '../models/models';
 import { schema } from '../validation/schema';
 import useAccounts from '../state/useAccounts';
+import { RootState } from '../state/store';
 
 export default function UncontrolledForm() {
   const [errors, setErrors] = useState<IFormErrors>({});
   const navigate = useNavigate();
   const { saveAccount } = useAccounts();
+  const countries = useSelector((state: RootState) => state.countries);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -112,7 +114,7 @@ export default function UncontrolledForm() {
         {errors.country && <span className="error">{errors.country}</span>}
 
         <datalist id="countries">
-          {COUNTRIES.map((country, i) => (
+          {countries.map((country, i) => (
             <option key={i} value={country} />
           ))}
         </datalist>

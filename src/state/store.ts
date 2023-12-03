@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 import accountReducer from './accountSlice';
+import countriesReducer from './countriesSlice';
 
 export const store = configureStore({
   reducer: {
     accounts: accountReducer,
+    countries: countriesReducer,
   },
 });
 
