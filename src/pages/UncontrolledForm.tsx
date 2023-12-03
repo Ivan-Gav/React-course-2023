@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import * as yup from 'yup';
@@ -7,12 +7,14 @@ import { IFormErrors } from '../models/models';
 import { schema } from '../validation/schema';
 import useAccounts from '../state/useAccounts';
 import { RootState } from '../state/store';
+import StrengthIndicator from '../components/StrengthIndicator';
 
 export default function UncontrolledForm() {
   const [errors, setErrors] = useState<IFormErrors>({});
   const navigate = useNavigate();
   const { saveAccount } = useAccounts();
   const countries = useSelector((state: RootState) => state.countries);
+  const passRef = useRef(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -115,8 +117,15 @@ export default function UncontrolledForm() {
         <label htmlFor="password" className="label">
           Password
         </label>
-        <input type="password" id="password" name="password" />
+        <input type="password" id="password" name="password" ref={passRef} />
         {errors.password && <span className="error">{errors.password}</span>}
+        {errors.password && (
+          <StrengthIndicator
+            pass={
+              passRef.current ? (passRef.current as HTMLInputElement).value : ''
+            }
+          />
+        )}
       </fieldset>
 
       <fieldset>
