@@ -19,7 +19,9 @@ export default function AccountCard(props: AccountCardProps) {
 
   return (
     <div className={isNew ? 'card new' : 'card'}>
-      <img src={image} alt="no image" height="200px" />
+      <div className="card-img-container">
+        <img src={image} alt="no image" height="200px" />
+      </div>
       <div className="card-text">
         <h3>{name}</h3>
         <p>

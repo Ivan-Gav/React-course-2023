@@ -71,6 +71,20 @@ fieldset {
   padding: 20px;
 }
 
+.card-img-container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img {
+  max-width: 200px;
+  height: auto;
+}
+
 .card.new {
   background-color: coral;
 }

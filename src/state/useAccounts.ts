@@ -23,11 +23,13 @@ export default function useAccounts() {
   const dispatch = useDispatch();
 
   const saveAccount = async (account: IFormInputs) => {
-    const pic = await toBase64(account.image);
+    const pic =
+      account.image instanceof FileList ? account.image[0] : account.image;
+    const image = await toBase64(pic);
     const { name, age, email, gender, country, password } = account;
     const data: IFormData = {
       id: uuidv4(),
-      image: typeof pic === 'string' ? pic : '',
+      image: typeof image === 'string' ? image : '',
       name,
       age,
       email,

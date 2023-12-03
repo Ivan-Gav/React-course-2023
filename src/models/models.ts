@@ -13,7 +13,7 @@ export interface IFormErrors {
 }
 
 export interface IFormInputs {
-  image: File;
+  image: FileList | File;
   name: string;
   age: string;
   email: string;

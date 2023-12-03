@@ -14,18 +14,23 @@ function isValidFileType(fileName: string) {
 
 export const schema = yup.object().shape({
   image: yup
-    .mixed<File>()
+    .mixed<FileList | File>()
     .required()
     .test('required', 'this field is required', (value) => {
-      return !!(value.name !== '');
+      const testedValue =
+        value instanceof FileList ? value[0].name : value.name;
+      return !!(testedValue !== '');
     })
     .test('is-valid-size', 'max allowed size is 1MB', (value) => {
-      if (!value.name) return true;
-      return value.size <= MAX_FILE_SIZE;
+      const testedValue = value instanceof FileList ? value[0] : value;
+      if (!testedValue.name) return true;
+      return testedValue.size <= MAX_FILE_SIZE;
     })
     .test('is-valid-type', 'only png or jpeg files are allowed', (value) => {
-      if (!value.name) return true;
-      return isValidFileType(value.name.toLowerCase());
+      const testedValue =
+        value instanceof FileList ? value[0].name : value.name;
+      if (!testedValue) return true;
+      return isValidFileType(testedValue.toLowerCase());
     }),
   name: yup
     .string()

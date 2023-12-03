@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import emptyProfile from '../assets/images/empty-profile.png';
 import { COUNTRIES } from '../constants/countries';
 import { IFormInputs } from '../models/models';
 import { schema } from '../validation/schema';
+import useAccounts from '../state/useAccounts';
 
 export default function ReactHookForm() {
   const {
@@ -16,12 +18,16 @@ export default function ReactHookForm() {
     resolver: yupResolver(schema),
     mode: 'all',
   });
+  const navigate = useNavigate();
+  const { saveAccount } = useAccounts();
 
   const showpass = watch('showpass');
   const showconfirm = watch('showconfirm');
 
-  const onSubmit = (data: IFormInputs) => {
-    console.log(data);
+  const onSubmit = async (validData: IFormInputs) => {
+    console.log(validData);
+    const data = await saveAccount(validData);
+    navigate('/', { state: { id: data.id } });
   };
 
   return (
