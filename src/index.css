@@ -57,3 +57,37 @@ fieldset {
   color: red;
 }
 
+.card {
+  width: 250px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: aliceblue;
+  border-radius: 10px;
+  border: none;
+  padding: 20px;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.card-text h3 {
+  margin: 10px;
+  align-self: center;
+}
+
+.card-text p {
+  margin: 4px;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}

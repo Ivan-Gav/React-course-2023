@@ -1,18 +1,19 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
+import AccountCard from './AccountCard';
 
 export default function AccountsList() {
   const accounts = useSelector((state: RootState) => state.accounts);
 
   return (
     <>
-      <div className="mainpage">Main page content</div>
+      <h2 className="mainpage">Main page content</h2>
       {!!accounts.length && (
-        <ul>
-          {accounts.map((account, i) => (
-            <li key={`${i}:_${account.name}`}>{account.name}</li>
+        <div className="card-list">
+          {accounts.toReversed().map((account, i) => (
+            <AccountCard key={`${i}:_${account.name}`} {...account} />
           ))}
-        </ul>
+        </div>
       )}
     </>
   );

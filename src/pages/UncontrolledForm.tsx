@@ -18,10 +18,9 @@ export default function UncontrolledForm() {
     const formData = new FormData(e.target as HTMLFormElement);
     const formJson = Object.fromEntries(formData.entries());
     try {
-      const isValid = await schema.validate(formJson, { abortEarly: false });
+      const validData = await schema.validate(formJson, { abortEarly: false });
       setErrors({});
-      console.log(`Form is valid: ${isValid}`);
-      await saveAccount(isValid);
+      await saveAccount(validData);
       navigate('/');
     } catch (error) {
       if (error instanceof yup.ValidationError) {
