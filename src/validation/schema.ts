@@ -46,7 +46,7 @@ export const schema = yup.object().shape({
   name: yup
     .string()
     .required('this field is required')
-    .matches(/^[A-Z]\w+/g, 'name must begin with capitall letter'),
+    .matches(/^[A-Z]/g, 'name must begin with capital letter'),
   age: yup
     .string()
     .required('this field is required')
