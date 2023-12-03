@@ -1,3 +1,5 @@
+import AccountsList from '../components/AccountsList';
+
 export default function MainPage() {
-  return <div className="mainpage">Main page content</div>;
+  return <AccountsList />;
 }

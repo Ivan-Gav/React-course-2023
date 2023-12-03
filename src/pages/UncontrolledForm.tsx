@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
 import emptyProfile from '../assets/images/empty-profile.png';
 import { COUNTRIES } from '../constants/countries';
 import { IFormErrors } from '../models/models';
 import { schema } from '../validation/schema';
+import useAccounts from '../state/useAccounts';
 
 export default function UncontrolledForm() {
   const [errors, setErrors] = useState<IFormErrors>({});
+  const navigate = useNavigate();
+  const { saveAccount } = useAccounts();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -17,6 +21,8 @@ export default function UncontrolledForm() {
       const isValid = await schema.validate(formJson, { abortEarly: false });
       setErrors({});
       console.log(`Form is valid: ${isValid}`);
+      await saveAccount(isValid);
+      navigate('/');
     } catch (error) {
       if (error instanceof yup.ValidationError) {
         let errs: IFormErrors = {};
@@ -26,7 +32,6 @@ export default function UncontrolledForm() {
           }
         }
         setErrors(errs);
-        console.log(error.inner);
       }
     }
   };

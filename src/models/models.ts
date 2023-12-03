@@ -25,3 +25,8 @@ export interface IFormInputs {
   showpass?: boolean;
   showconfirm?: boolean;
 }
+
+export type IFormData = Omit<
+  IFormInputs,
+  'image' | 'confirmpassword' | 'tc' | 'showpass' | 'showconfirm'
+> & { image: string };
