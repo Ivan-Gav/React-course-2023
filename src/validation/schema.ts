@@ -12,21 +12,32 @@ function isValidFileType(fileName: string) {
   return !!(extension && VALID_FILE_EXTENSIONS.indexOf(extension) > -1);
 }
 
+function isEmptyFileInput(value: FileList | File) {
+  return (
+    !value ||
+    (!(value instanceof FileList) && !(value instanceof File)) ||
+    (value instanceof FileList && !value.length)
+  );
+}
+
 export const schema = yup.object().shape({
   image: yup
     .mixed<FileList | File>()
     .required()
     .test('required', 'this field is required', (value) => {
+      if (isEmptyFileInput(value)) return false;
       const testedValue =
         value instanceof FileList ? value[0].name : value.name;
       return !!(testedValue !== '');
     })
     .test('is-valid-size', 'max allowed size is 1MB', (value) => {
+      if (isEmptyFileInput(value)) return false;
       const testedValue = value instanceof FileList ? value[0] : value;
       if (!testedValue.name) return true;
       return testedValue.size <= MAX_FILE_SIZE;
     })
     .test('is-valid-type', 'only png or jpeg files are allowed', (value) => {
+      if (isEmptyFileInput(value)) return false;
       const testedValue =
         value instanceof FileList ? value[0].name : value.name;
       if (!testedValue) return true;
