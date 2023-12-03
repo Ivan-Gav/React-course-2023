@@ -4,9 +4,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import './index.css';
 import App from './App.tsx';
-import ErrorPage from './page/ErrorPage.tsx';
-import MainPage from './page/MainPage.tsx';
-import UncontrolledForm from './page/UncontrolledForm.tsx';
+import ErrorPage from './pages/ErrorPage.tsx';
+import MainPage from './pages/MainPage.tsx';
+import UncontrolledForm from './pages/UncontrolledForm.tsx';
+import ReactHookForm from './pages/ReactHookForm.tsx';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'react-hook-form',
-        element: <p>react-hook-form</p>,
+        element: <ReactHookForm />,
       },
     ],
   },

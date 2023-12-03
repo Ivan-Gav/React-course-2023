@@ -17,7 +17,7 @@ export const schema = yup.object().shape({
     .mixed<File>()
     .required()
     .test('required', 'this field is required', (value) => {
-      return !!value.name;
+      return !!(value.name !== '');
     })
     .test('is-valid-size', 'max allowed size is 1MB', (value) => {
       if (!value.name) return true;
@@ -62,5 +62,11 @@ export const schema = yup.object().shape({
     .string()
     .required('this field is required')
     .oneOf([yup.ref('password')], 'passwords do not match'),
-  tc: yup.string().required('please accept terms and conditions'),
+  tc: yup
+    .string()
+    .test(
+      'for-hook-form',
+      'please accept terms and conditions',
+      (value) => value === 'accept'
+    ),
 });

@@ -40,7 +40,6 @@ export default function UncontrolledForm() {
             type="file"
             id="image"
             name="image"
-            accept="image/jpeg, image/png, image/jpg"
             hidden
           />
           <img
@@ -117,7 +116,7 @@ export default function UncontrolledForm() {
         <label htmlFor="password" className="label">
           Password
         </label>
-        <input type="text" id="password" name="password" />
+        <input type="password" id="password" name="password" />
         {errors.password && <span className="error">{errors.password}</span>}
       </fieldset>
 
@@ -125,14 +124,14 @@ export default function UncontrolledForm() {
         <label htmlFor="confirmpassword" className="label">
           Confirm Password
         </label>
-        <input type="text" id="confirmpassword" name="confirmpassword" />
+        <input type="password" id="confirmpassword" name="confirmpassword" />
         {errors.confirmpassword && (
           <span className="error">{errors.confirmpassword}</span>
         )}
       </fieldset>
 
       <fieldset>
-        <input type="checkbox" id="tc" name="tc" />
+        <input type="checkbox" id="tc" name="tc" value="accept" />
         <label htmlFor="tc">accept Terms and Conditions</label>
         {errors.tc && <span className="error">{errors.tc}</span>}
       </fieldset>
