@@ -1,0 +1,135 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+fieldset {
+  border: none;
+}
+
+.label {
+  display: block;
+  min-width: 130px;
+  margin-bottom: 4px;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  height: 40px;
+  background-color: silver;
+
+  .active {
+    font-weight: bold;
+  }
+}
+
+.profile-pic-input {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+progress.level-1 {
+  accent-color: red;
+}
+
+progress.level-2 {
+  accent-color: orange;
+}
+
+progress.level-3 {
+  accent-color: yellow;
+}
+
+progress.level-4 {
+  accent-color: green;
+}
+
+.mainpage {
+  padding: 10px;
+}
+
+.errorpage {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  height: 100vh;
+}
+
+.form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  margin-left: 10px;
+  color: red;
+}
+
+.card {
+  width: 250px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: aliceblue;
+  transition: background-color 3s;
+  border-radius: 10px;
+  border: none;
+  padding: 20px;
+}
+
+.card-img-container {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-img-container img {
+  max-width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.card.new {
+  background-color: coral;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.card-text h3 {
+  margin: 10px;
+  align-self: center;
+}
+
+.card-text p {
+  margin: 4px;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
